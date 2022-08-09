@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex13switch문.html</title>
+</head>
+<body>
+    <h1>switch~case문을 이용한 실습</h1>
+    prompt로 "가고싶은 포탈 사이트 이름을 입력하세요" 
+    메시지를 띄우고 입력을 받는다. (ex. 네이버, 구글....)<br>
+    switch~case문 이용해서 해당 사이트로 이동하는 프로그램을 작성하세요 (location객체 이용)
+    <hr color='red'>
+
+    자바스크립트 핸들러(onclick)을 이용해서 button에 href와 같은 역할을 준다.
+    <button onclick="window.location.href='http://www.naver.com'">페이지 이동</button>
+    <script>
+    let str=prompt('가고싶은 사이트를 입력하세요');
+    let url='';
+    
+    switch(str){
+        case "네이버" :
+            url='https://www.naver.com/'
+        break;
+        case "구글" :
+            url='https://www.google.com/'
+            break;
+        case "다음" :
+            url='https://www.daum.net'
+            break;
+        case "네이트" :
+            url='https://www.nate.com'
+            break;
+    }
+    document.write(url) //여기까지하면 페이지에 url 이 단순 문자로 뜬다.
+
+    //html에서 연결주소로 바뀜.
+    // location.href=url;
+
+    //팝업으로 띄우기 
+    // let win=window.open(url,"popup","width=500,height=500")//popup은 그냥 참조할 객체명 
+
+    //작성한html + 새탭
+        window.open(url,"_blank");
+
+    // location.target='_blank'; // 새탭띄워서 url이동?  아닌듯..location.href=url;가 있어서 실행하는듯..
+</script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04데이터타입</title>
+</head>
+<body>
+    <h1>자바스크립트 자료유형</h1>
+    <h2>기본자료형:number, boolean, string, undefined</h2>
+    <h2>참조형: object, function </h2>
+    <script>
+        //변수 선언 => var, let(키워드), const(상수 선언시)
+        var a; // a를 변수에 담겠다. (var가 int역할이 아님)
+        a=10; // a에 값을 할당.
+        window.document.write("a="+a,"<br>");// br을 출력문 안에줘야 다음출력문을 아래에 작성할 수 있다.
+
+        //문서가 들어가는 영역은 document.write(sysout과 같음)로 출력해야함.
+        document.write("a의 자료형="+typeof a,"<br>");// typeof 는 자료형을 반환한다.
+
+        a='hi'// a가 ''또는 ""를 만나서 정수형이였으나 문자열로 자동 형 초기화됨
+        document.write("a의 자료형2="+typeof(a),"<br>"); // ()를 써줘도 되고 20번ㅊㅓ럼 안써도됨
+
+        let intNum=100;//number
+        let doubleNum=5.123;//number
+        
+        var bool=true;//boolean유형
+        var obj1=null;//null 아무것도 아닌 값.
+        var obj2;//undefined 아직 정해지지 않은 값.
+        var str='이것은 문자열';//string
+
+        //typeof 연산자로 자료형 확인하기
+        document.write("intNum의 자료형="+typeof intNum,"<br>");
+        document.write(doubleNum, "doubleNum의 자료형="+typeof doubleNum,"<br>");
+        document.write("bool의 자료형="+typeof bool,"<br>");
+        document.write("obj1의 자료형="+typeof obj1,"<br>");//object유형.
+        document.write(obj2, "obj2의 자료형="+typeof obj2,"<br>");
+        document.write(str, "str의 자료형="+typeof str,"<br>");
+
+        document.write('<hr color="red">');
+
+
+        //참조유형
+        //객체(속성+행동양식)
+        var car=new Object();
+        car.color='deeppink';//객체명, 속성명 = 값
+        car.capacity=2000;//capacity 후 숫자면 정수, string이면 string 유형
+
+        car.run=function(){//function은 이름이없는 함수, run에 대입한다.
+            document.write("<h2>"+this.color+"색상의 자동차가 달려요");
+        }   
+        // alert(car.capacity) // 2000이 뜬다.
+        document.write(car,typeof car)
+        
+        //함수 호출
+        car.run();
+
+
+    </script>
+</body>
+</html>

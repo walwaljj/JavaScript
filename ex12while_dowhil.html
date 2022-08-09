@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex12while_dowhil.html</title>
+</head>
+<body>
+    <h1>while루프문</h1>
+    <script>
+        /* while(조건식){
+                실행문;
+                증감식;
+        }
+        
+        do{
+            실행문;
+            증감식;
+        }while(조건식);
+
+        */
+       
+        let i=7;
+        while(i>0){
+            document.write(`<h1>JavaScript: ${i}</h1>`);
+            i-=3;
+        }
+        /*do~while문을 이용해서 1~30까지의 수중 5단위 마다 '땅콩',
+        10단위 마다는 '찐콩'을 출력하세요.
+        10,20,30 => 땅콩
+        5,10,15,20,25=> 찐콩
+        나머지는 숫자 출력
+        */
+
+        let num=0;
+        do{
+            num++;
+            document.write(num+',');
+            if(num%10==0){// 5의배수는 10의 배수이기도 하기때문에 
+                            //  10을 먼저 걸러서 출력하고 ,
+                            //10이 아닌 수 중에 5의 배수를 출력문을 거치게/
+                document.write("땅콩<br>");
+            }
+            else if(num%5==0){
+                document.write("찐콩<br>");
+            }
+
+            
+        }while(num<30) 
+    </script>
+</body>
+</html>

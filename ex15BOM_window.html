@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex15BOM_window.html</title>
+    <style>
+        div#circle{
+            background-color: blueviolet;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>window객체의 setTimeout()/clearTimeout()활용</h2>
+    <h2>window객체의 setInterval()/clearInterval()활용</h2>
+    <button onclick="show()">Click Me</button>
+    <button onclick="go()">go go</button>
+    <button onclick="stop()">Stop</button>
+    <button onclick="goGoogle()">3초 뒤에 구글로 이동</button>
+    <button onclick="move()">Move</button>
+    <hr>
+
+    <div id="circle"></div>
+
+    <script>
+        function show(){
+            //id가 circle인 요소를 찾아서
+            //해당 요소의 style속성을 이용해서 display 속성값을 변경
+        let obj=document.getElementById('circle');//getElementById는('#')이안붙음
+        obj.style.display='block';// 'block'의 반대는 none
+        // obj.style.background-color='yellow';//오류남.js에서는 -를 연산자로인식
+        //js에서 css를 사용하려면 -가 들어갈때 -대신 대문자로.
+        obj.style.backgroundColor='yellow'
+
+        }
+        function go(){
+            let obj=document.querySelector('#circle');//querySelector는 ('#')또는 ('.')이붙음.
+
+            //window.setTimeout(함수명, 밀리초): 밀리초 이후에 함수를 한번만 호출한다.
+            //window.clearTimeout(wid):setTimeout() 의 매개변수 값(초)를 중지시킴.
+            wid=window.setTimeout(show,3000);//setTimeout(함수, 시간)1/1000초 단위임.
+        }
+        function stop(){
+            if(wid!=null)
+                window.clearTimeout(wid);//setTimeout의 반대,중지시킴/
+        }
+        //[문제] goGoogle () 함수에서 location이용햐서 3초 뒤 구글로 이동
+        // let url='https://www.google.com/';
+
+        function goGoogle(){
+            for(let i=0;i<=3;i++){
+            setTimeout(goGoogle(window.location.href='https://www.google.com/'),i*1000)
+            }
+
+            setTimeout(function(goGoogle){
+            window.location.href='https://www.google.com/';
+            },3000);
+        }
+
+        
+               
+        //[문제] move()함수에서는 circle객체를 참조해서 circle을 보여준 뒤에 x좌표를 300px
+        //인 위치로 4초뒤 이동시키기//setTime
+        
+        function move(){
+            
+            let obj=document.querySelector('#circle');
+            obj.style.display='block';
+            if(obj!=null)
+             window.moveTo(300,0);
+            // setTimeout(show(moveTo(300,0)),4000)
+            
+        }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06함수.html</title>
+</head>
+<body>
+    <h1>함수</h1>
+    <script>
+        /*
+        [1] function 함수명([매개변수,...]){...}
+        ==> hoisting(끌어올림)이 지원된다.
+
+        [2] var 변수명 = function ([매개변수,...]){...}
+            => 리터럴(literal) 방식으로 함수를 구성
+            => hoisting 이 지원되지 않는다.
+                리터럴 방식은 함수를 구성한 후에야 호출 가능함.
+        */
+
+        plus("good","luck");//함수 생성보다 먼저 선언 , 제일먼저 실행됨.
+
+        // multiple(2,3);//에러남. 선언 후에 실행해야한다.
+
+        function plus(a,b){
+            window.document.write("<h2>"+a+"+"+b+"="+(a+b)+"</h2>");
+        }
+        var multiple= function(a,b){// var 변수 = 함수 ==> 호이스팅 안됨. 24번줄 에러
+            document.write("<h2>"+a+"x"+b+"="+(a*b)+"<h2>");
+        }
+
+        plus(1,2);
+        plus(0.1,0.2);
+
+        multiple(2,3);
+
+
+    </script>
+</body>
+</html>
+
+
+

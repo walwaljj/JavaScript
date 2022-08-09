@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex14BOM_window.html</title>
+</head>
+<body>
+    <h1>BOM (Browser Object Model) - window객체</h1>
+    <button onClick="openWin()">팝업창 열기</button>
+    <button onclick="closeWin()">팝업창 닫기</button>
+    <button onclick="changeLoc()">팝업창 위치변경</button>
+    <button onclick="changeSize()">팝업창 크기변경</button>
+    <hr color="red">
+
+    <script>
+
+        let win=null;//null또는 ''주면됨... let win;으로 선언만해도 되는듯?
+                    //근데 let 생략하고 win;만하면안됨. win=null등 변수랑 함께 하나는 더 적어야함.
+
+        function openWin(){
+
+            let url='ex01.html'
+            // let url='http://www.naver.com' ==> 도메인이 달라서 안됨.
+
+            //window.open(url,"창이름","속성값들")
+            win=window.open(`${url}`,"gg","width=400, height=400, left=100, top=150, resizable=yes,menuber = yes");
+            //폭,높이, x,y, 그 외 속성
+            //menuber = yes ,toolbar= yes, scrollber=yes
+            //win=> 새로 띄운 윈도우창을 참조한다.
+        }//------------------------------------------------
+        var closeWin= function(){
+            //window.close(); 윈도우 창 닫기
+            if(win!=null){
+                win.close();
+            }
+        }//------------------------------------------------
+
+        const changeLoc= function(){
+            //window.moveTo(x,y) : 윈도우 창을 이동시킨다. 단 , 같은 도메인일 경우에만 동작한다.
+            //만약 위에서 url을 http://www.naver.com 으로 주고 변경하려면 실행안됨
+
+            //300,400으로 이동시키기.
+            if(win!=null)
+          win.moveTo(left=300,top=400);//win으로 해야 같은 url로 이동., left, top 생략가능.
+           win.focus(); //포커스주기
+        }//------------------------------------------------
+        //window.resizeTo(w,h) : 윈도우창의 크기를 변경
+          //chageSize함수 구성해서 윈도우창의 크기를 키우기(700,700)
+        const changeSize = function(){
+            if(win!=null){
+                win.resizeTo(700,700);
+            }
+        }
+    </script>
+
+</body>
+</html>

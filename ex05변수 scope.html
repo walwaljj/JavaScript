@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex05변수 scope.html</title>
+</head>
+<body>
+    <h1>전역변수, 지역변수, 매개변수</h1>
+    <script type="text/javascript">
+        var global='함수 바깥에 선언한 전역변수';
+
+        function hello(){
+            var local='함수 안에 선언하면 지역변수.';
+            
+            alert('global='+global);
+            alert('local='+local);
+            aaa=500;// var를 생략하고 변수를 선언, 초기화 => 전역변수
+        }
+        function hi(name){// name매개변수는 var를 생략하고 변수명만 기술한다.(지역변수)
+            alert('hi() global='+global);
+            // alert('hi() local='+local);
+            //  ㄴ==> function안에 있는 지역변수를 호출-> 에러남.=> 브라우저 실행 끝남.
+            alert('hihihi aaa='+aaa);
+            alert('hi '+name);// name을 매개변수로 받지 못한경우 undefine나옴
+        }
+
+        //함수 호출 후 출력하기.
+        // hi();// hello가 호출이 안된 상태에서 hello를 호출하면 
+                //aaa가 정의되지 않아 aaa호출단계에서 브라우저 실행 끝남.
+        hello();
+        hi('ike');// name을 매개변수로 받지 못한경우 undefine나옴
+    </script>
+        
+</body>
+</html>

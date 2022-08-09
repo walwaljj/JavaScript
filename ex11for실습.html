@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex11for실습.html</title>
+    <style>
+        .tb{
+            width: 70%;
+            margin: auto;/*중앙 위치 :  width값 후 magin auto로해야함*/
+            border: thick solid seagreen;
+            text-align: center;
+        }
+        .tb tr>td{
+            border-bottom:1px dashed darkcyan;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>3행5열 형태의 테이블 출력하되 for루프로</h1>
+    <script>
+        var row=prompt('행의 수를 입력하세요');
+        var col=prompt('열의 수를 입력하세요');
+        var bgcr=prompt('배경색을 입력하세요');// 스타일 영역에 넣을수 없음.
+
+        let str = `<table border='0' class='tb' style='background-color:${bgcr}'>`;
+            for(var i = 1 ; i <= row ; i++){//행의 조건 3행
+            str+=`<tr>`;
+                for(var j = 1 ; j <= col ; j ++ ){//열의 조건 5열
+                str+=`<td>딸기`;
+                    
+                str+=`</td>`;
+                }//열의 조건 for----------------------------------
+            str+=`</tr>`;
+            }//행의 조건 for----------------------------------------
+        str+=`</table>`;
+        // `${row}`
+        document.write(str);
+    </script>
+</body>
+</html>

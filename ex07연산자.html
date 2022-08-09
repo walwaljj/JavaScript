@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex07연산자.html</title>
+</head>
+<body>
+    <h1>자바스크립트 연산자</h1>
+    <!-- +, -, *, /, % -->
+    <script>
+        var num1=window.prompt("정수1을 입력하세요",1);
+                            // ㄴ(method) prompt(message?: string, _default?: string): string
+        var num2=prompt("정수2를 입력하세요",1);
+
+        print(num1+", typeof "+typeof(num1));
+        print(num2+", typeof "+typeof(num2));
+        print(num1+"+"+num2+"="+(num1+num2));// 문자열결합이 일어남.
+
+        
+
+        //문자열을 정수로 변환하는 함수 : parseInt() 
+        //         실수로 변환하는 함수 : parsFloat();
+
+        //입력받은 값을 이용해서 산술연산(+, -, *, /, %)을 수행하세요
+
+        var n1=parseInt(num1);
+        var n2=parseInt(num2);
+        document.write("<hr color='red'> ")
+        print(n1+"+"+n2+"="+(n1+n2));
+        print(n1+"-"+n2+"="+(n1-n2));
+        print(n1+"*"+n2+"="+(n1*n2));
+        print(n1+"/"+n2+"="+(n1/n2));
+        print(n1+"%"+n2+"="+(n1%n2));
+        document.write("<hr>")
+        //이렇게하면 +에서 에러남 왜,.?
+        print(num1+"+"+num2+"="+parseInt(num1+num2));// 
+
+        
+        print(num1+"+"+num2+"="+(parseInt(num1)+parseInt(num2)));
+        print(num1+"-"+num2+"="+parseInt(num1-num2));
+        print(num1+"*"+num2+"="+parseInt(num1*num2));
+        print(num1+"/"+num2+"="+parseInt(num1/num2));
+        print(num1+"%"+num2+"="+parseInt(num1%num2));
+        document.write("<hr color='blue'> ")
+        parseInt(print(num1+"+"+num2+"="+(num1+num2)));
+        var x=5;
+        var y="5.0";
+        //[1] == : 값을 비교한다. 자료형이 달라도 값이 같으면 true, 다르면 false
+        //[2] === : 자료형과 값을 비교한다. 값이 같아도 자료형이 다르면 false
+
+        print("x==y : "+(x==y));
+        print("x===y : "+(x===y));// x는 정수, y 는 ""로 실수유형이라 결과가 false 로 나온다.
+
+        function print(str){
+            document.write("<h2>"+str+"</h2>");
+            
+        }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex10for루프.html</title>
+</head>
+<body>
+    <h1>반복문-for루프문</h1>
+    <script>
+        for(var i=0;i<5;i++){
+            document.write("Hello : "+i,"<br>");
+        }
+        
+        for(j=3;j>-1;j--){// var를 생략하면 전역변수처럼 취급
+            document.write("JavaScript: "+ j,"<br>");
+        }
+
+        dan=Number(dan);
+        var cr='white';
+        
+
+        var dan=prompt("구구단의 몇 단을 할까요?",2);
+
+        cr=(dan%2==0) ?'yellow':'lime';//삼항연산자
+        //cr을 프롬프터 밑에서 해줘야함,, dan 영향을 받도록
+
+        document.write(`<h1>${dan} 단</h1>`);
+
+        var str='<table border="1" width="150px" style="background:'+cr+'">';
+
+            for(var k=1;k<10;k++){
+                
+            str+="<tr>";
+                str+="<td style='text-align:center'>";
+                   str+=dan+"x"+k+"="+(dan*k);
+                str+="</td>";
+            str+="</tr>";
+                }
+            str+="</table>";
+
+            
+            
+            
+            document.write(str);
+//--------------------------------------------------------------------  
+        // function a(dan){
+        //     var str="<table border='1'>";
+        //     for(var k=1;k<10;k++){
+        //          str+="<tr>";
+        //             for(dan=1;dan<10;dan++){
+        //                 str+="<td>"+(dan+'x'+k+'='+k*dan);
+        //                 }
+        //                 document.write("<br>")
+        //             }
+        //         str+="</td>";
+        //     str+="</tr>";
+        //     str+="</table>";
+        // }      var cr="";
+        //     if(dan%=0){
+        //         cr="yellow";
+        //     }else{
+        //         cr="lime";
+        //     }
+        //     a(dan);
+        //     document.write(`<h1 style="color:${cr}">`+str);
+
+    
+
+        
+
+       
+        //[1] for루프 이용해서 구구단을 출력하세요
+        //    단, table태그를 이용해서 테이블 형태로 출력하세요
+        //[2] 입력받은 단이 짝수단이면 테이블 배경색을 yellow로 주고
+        //     홀수단이면 lime색으로 주세요
+
+
+    </script>
+</body>
+</html>
