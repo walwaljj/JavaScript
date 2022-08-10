@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for문을 사용해 1부터 1000까지 더하기</title>
+    <style>
+        div{
+        display: inline-block;
+        padding : 0,20px, 30px, 30px;
+        margin: 15px;
+        border: 1px solid #ccc;
+        line-height: 2;
+        }
+
+    div h2{
+        text-align: center;
+        font-weight: bold;
+    }
+    </style>
+</head>
+<body>
+    <script>
+
+        document.write("<h1>구구단!</h1>")
+
+        // var i;
+        // var sum = 0;
+        
+        // for(i=1; i<=1000;i++){
+        //     sum+=i
+        // }document.write(`<h3>1000까지의 합은</h3><h2>${sum}</h2>입니다.`)
+
+        
+        // var dan=prompt("단수를 입력하세요");
+
+        for(var i=1;i<10;i++){
+            document.write(`<div>`)
+                document.write(`<h2>${i}단</h2>`);
+            for(var j=1;j<10;j++){
+                document.write(`${i}x${j}=${j*i}<br>`);
+            }
+            document.write("</div>");
+        }
+    </script>
+</body>
+</html>

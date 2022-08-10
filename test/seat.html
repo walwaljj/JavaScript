@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>seat.html</title>
+</head>
+<body>
+        <!-- 입장객 수와 한줄에 몇명 앉을 것인지 입력받고 총 몇줄이 필요한지 계산하는식-->
+        <script>
+            var memNum, colNum
+            memNum=prompt("입장객 수를 입력하세요");
+
+            colNum=prompt("한줄에 앉을 사람 수를 입력하세요");
+
+            
+            var rowNum = parseInt(memNum/colNum);
+            if(rowNum==0){
+            }else{
+                rowNum=parseInt(memNum/colNum)+1
+            }
+            document.write(`${rowNum} 줄이 필요합니다.`);
+            
+            
+        </script>
+</body>
+</html>

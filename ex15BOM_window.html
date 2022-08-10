@@ -28,6 +28,7 @@
     <div id="circle"></div>
 
     <script>
+        var wid=null;// null값을 줘서 아래 stop()에서 null이기때문에 에러가안남.
         function show(){
             //id가 circle인 요소를 찾아서
             //해당 요소의 style속성을 이용해서 display 속성값을 변경
@@ -49,17 +50,22 @@
             if(wid!=null)
                 window.clearTimeout(wid);//setTimeout의 반대,중지시킴/
         }
+        
         //[문제] goGoogle () 함수에서 location이용햐서 3초 뒤 구글로 이동
         // let url='https://www.google.com/';
 
-        function goGoogle(){
+        function goGoogle(){//또는 const gogoogle=function()
             for(let i=0;i<=3;i++){
             setTimeout(goGoogle(window.location.href='https://www.google.com/'),i*1000)
             }
 
-            setTimeout(function(goGoogle){
-            window.location.href='https://www.google.com/';
-            },3000);
+            // setTimeout(function(goGoogle){
+            // window.location.href='https://www.google.com/';
+            // },3000);
+
+            // setTimeout(()=>{
+            //     window.location.href='https://www.google.com/';
+            // },3000);
         }
 
         
@@ -69,14 +75,40 @@
         
         function move(){
             
-            let obj=document.querySelector('#circle');
-            obj.style.display='block';
-            if(obj!=null)
-             window.moveTo(300,0);
-            // setTimeout(show(moveTo(300,0)),4000)
+            let obj=document.querySelector('#circle');//앞에서 전역변수가아니라 지역변수로 했기때문에 계속불러야함.
+            obj.style.display='block';//앞에서 숨겨져 있기때문에 블럭으로 다시 나타나게 해야함.
+           
+
+            //방법3
+            setTimeout(()=>{
+                obj.style.position='absolute';
+                obj.style.left='300px';
+            },3000)
+
+
+
+
+            //방법2
+            setTimeout(function(){
+                obj.style.position='absolute';
+                obj.style.left='300px';
+            },4000)
+
+
+            //방법1
+            setTimeout(moveCircle,4000)
             
         }
+        
+        function moveCircle(){
+            let obj=document.querySelector('#circle');
+            console.log('mobeCircle호출됨');//그냥 호출됐는지 확인좀해보려고
 
+            obj.style.position='absolute';//absolyte로 바디를 기준으로 이동하게. 
+            obj.style.left='300px';//동작안함. 포지션이 현재 스테틱이기때문에.
+        
+            
+       }
 
     </script>
 </body>

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">  
+  <title>18BOM_history객체.html</title>
+ </head>
+ <body>
+  <h1 style="color : magenta">두번째 페이지</h1>
+  <a href="his03.html">3페이지 이동</a>
+  <p>
+    <!--버튼과 링크일때 이동방식다름-->
+    <!--버튼 : onclick=window.history.back(), onclick=window.history.forward()-->
+  <input type="button" value="이전 페이지" onclick="window.history.back()">
+  <input type="button" value="다음 페이지로" onclick="window.history.forward()">
+    <hr>
+    <!-- a링크일때(페이지의 url을 바꿈) ,
+        해결 : href ='javascript: http://....'
+            속성값에 javascript코드삽입해서 url을 바꾸지않게. -->
+    <a href="javascript:history.back()"><h3>한단계 이전 페이지로 가기</h3></a>
+    <a href="javascript:history.forward()"><h3>한단계 이후 페이지로 가기</h3></a>
+  </p>
+
+ </body>
+</html>

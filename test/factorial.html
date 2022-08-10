@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>factorial.html</title>
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        //1부터 n까지 프롬포터에 입력받아 곱하기
+        var n =prompt("어디까지 곱할까요?");
+        
+        document.write("<h1>while문을 이용한 팩토리얼</h1>")
+        
+        if(n!=0){
+            var resurlt=1;
+            var i=1;
+        while(i<=n){
+            resurlt*=i
+            i++;
+        }document.write(`${n}! 결과:${resurlt}`);
+    }else{
+        document.write("값을 입력하세요")
+    }
+        
+    </script>
+</body>
+</html>

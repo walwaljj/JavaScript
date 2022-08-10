@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex17BOM_document.html</title>
+    <script>
+        /*Document 객체의 속성과 함수
+            [1] title 속성: 현재 문서의 제목을 출력하거나 설정
+          [2] lastModified속성: 현재 html문서가 마지막에 저장된 시간
+          [3] write()함수
+          [4] getElementById('아이디명'), querySelector(selector),
+                getElementsByTagName('태그명'),getElementsByClassName('클래스명')
+          [5] fgColor속성: 글자색
+          [6] bgColor속성: 배경색
+        */
+       document.write("<hr color='red'>");
+    //    alert(document.title);// html 제목이 뜬다.
+       document.title="문서 제목을 변경해요";//html title이름이 바뀜
+       document.write(`<h2>현재 문서가 마지막 저장된 시간 : ${document.lastModified}</h2>`);
+
+       //id가 btn인 버튼객체를 얻어와서 alert()로 띄워보기
+      
+       window.onload=()=>{// onload : 모든 데이터를 메모리에 올림 .
+                            //즉 , 나중에 선언한 함수, html등 을 메모리에 먼저 로드하도록 하는 역할
+            let obj=document.getElementById('btn');
+
+            obj.onclick=function(){// 이벤트 헨들러.
+                // alert('click')
+
+                //document의 배경색,글자색을 변경
+                document.bgColor='lightgray';
+                document.fgColor='pink';
+                //버튼의 배경색, 글자색 변경. 
+                obj.style.backgroundColor='black';
+                obj.style.color='maroon';
+            }
+        }
+
+        </script>
+</head>
+<body>
+    <h1>BOM - window.document 객체</h1>
+    <button id="btn">document의 색상 변경</button>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function send(){
+            // alert('send')//form이 전송될때 onsubmit일때 함수 send()를 부르겠다.
+            let val= document.getElementById('userid').value;
+            if(!val){
+                alert('아이디를 입력하세요');
+                document.getElementById('userid').focus();
+                return false;//여기까지 하면 false 를 반환해서 submit안됨.
+            }
+            return true;//submit됨
+        }
+    </script>
+
+</head>
+<body>
+    <!-- button type이 submit이고 name이 없을 때!-->
+    <form id="idfrm" action="idCheck.jsp" onsubmit="return send()">
+        <!-- onsubmit할때 return 함수()를해서 onsubmit을 할지 말지 결정한다.-->
+
+        <!-- onsubmit핸들러의 경우 send()함수의 반환값에 따라
+        submit여부를 결정한다. true를 반환하면 서버에 전송하고
+        false반환하면 전송하지 않는다. -->
+        <h1>아이디 중복체크</h1>
+        아이디: <input type="text" name="id" id="userid"><p></p>
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>

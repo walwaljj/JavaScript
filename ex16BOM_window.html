@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #circle{
+            width:100px;
+            height:100px;
+            border-radius: 50%;
+            background-color:  olivedrab;
+            position: absolute;/*부모가 없어 바디를 기준으로 좌표를 잡음.*/
+            top :200px;
+        }
+    </style>
+    <script>
+        let wid=null;//전역변수 선언함=>다른함수에서 계속 선언하는 일 없도록
+
+
+        // let obj=document.querySelector('#circle');//위에서 짜면 
+        //alert(obj);                                 <=null이뜸. 아직 circle이 만들어지지않아서.
+        // 해결 :
+        window.onload=function(){// 윈도우가 onload모두실행되면 function을 실행해
+             obj = document.querySelector('#circle');
+            // alert(obj); <==null 안뜸 확인 후 주석
+        }
+
+        function show(){
+            if(wid==null){// wid를 여러번누르면 계속 알람이뜸. 방지하기위해 null일때만 함수를 실행하게 만듦.
+                wid=window.setInterval(function(){//setIntercal은 설정한 시간마다 계속 프로그램을 실행
+                    alert(":p");
+                },3000)
+            }
+        }
+
+
+        function stop(){
+            if(wid!=null)//null인데 함수가 실행되면 에러가남. 방지하기위해!
+                window.clearInterval(wid);
+        }
+
+
+        // [실습] Move버튼을 누르면 circle의 x좌표를 이동시켜서 공이 굴러가게 하세요
+        //        MoveStop버튼 누르면 공굴리기 중지시키기
+
+        let x =30;//전역변수를 만들기/==> 다시 move를 누르게되면 30으로 초기화되지않고 원래자리에서 다시움직이도록
+        function move(){
+           
+            if(wid==null)
+            wid=setInterval(function(){ 
+                
+                if(x>300){
+                    x=50;
+                }
+                x+=5;
+                
+                obj.style.left=x+'px'
+        
+            },20)
+        }
+    
+        function moveStop(){
+            if(wid!=null)
+                window.clearInterval(wid);       // 여기까지 했을때 wid가null이라   
+                wid=null;//을 해주면 move조건에 맞아 다시 move를 시작함.   
+        }
+    </script>
+</head>
+<body>
+    <h1>window 객체의 setInterval()/clearInterval()활용</h1>
+    <!-- setInterval(함수명,밀리초) : 밀리초 단위로 함수를 주기적으로 계속 수행한다.--> 
+    <button onclick="show()">Click Me</button>
+    <button onclick="stop()">Stop</button>
+    <button onclick="move()">Move</button>
+    <button onclick="moveStop()">MoveStop</button>
+    <button onclick="window.alert('반갑습니다.')">alert</button>
+    <button onclick="let str=prompt('메세지를 입력하세요'); alert(str)">prompt</button>
+    <!--prompt로 받은 메세지를 str에저장, 저장한 str을 alert로 받음.-->
+    <button onclick="ask()">confirm</button>
+    <hr>
+    <div id="circle"></div>
+    
+    <script>
+        function ask(){
+            let yn= confirm('네이버로 이동할까요?');//창이 뜰때 확인을 누르면 t, 취소면 f
+            if(yn){//확인을 눌렀다면
+                location.href='http://www.naver.com';//이동하게
+            }
+            else
+            alert('취소하셨습니다.')
+        }
+    </script>
+   
+</body>
+</html><!--ex16BOM_window.html-->

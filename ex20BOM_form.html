@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20BOM_form.html</title>
+    <script>
+        function check(){
+            //유효성 체크 "form이름.input이름.value"-- form이름이있는게 편리하다.
+                                                //앖으면 window.document.forms...
+            let val = frm.name.value;
+            // alert(val);//여기까지하면 입력한 name이 알림으로뜸
+            if(val==''){
+                alert('이름을 입력해야 해요');
+                frm.name.focus();//입력포커스주기=>알림창 후 텍스트 박스 깜빠김
+                return;
+                //버튼 디폴트인 submit은 return을 해도 서버에 전송
+                //해결 : [1]- button의 타입을 button으로 
+                // frm.submit();-form객체를 통해 submit()한다
+            }
+            if(val.length>5){
+                alert('이름은 5자 이내여야해요');
+                frm.name.select();
+                return;
+            }
+            // alert(frm.action);//getter 
+            // alert(frm.method);
+            frm.action='idFind.jsp';//setter
+            frm.method='get';//: 사용자가 입력한 방식이 주소창에 나옴.
+            frm.submit();
+        }//check()---------------------------------------------------
+
+        function check2(){
+            //form에 name을 주지 않았을경우 =>window.document.forms[n]식으로 접근.
+            let f=window.document.forms[1];
+            if(f.name.value==''){//또는 if(!f.name.value)
+                alert('이름을 입력하세요');
+                f.name.focus();
+                return;
+            }
+            if(!f.id.value){
+                alert('아이디를 입력하세요');
+                f.id.focus();
+                return;
+            }
+            
+            f.method='post';
+            f.submit();//type을 버튼으로 줬기 때문
+
+        }//check2()-------------------------------------------------
+    </script>
+</head>
+<body>
+    <h1>BOM- form객체</h1>
+    <!--[0]-->
+    <form name="frm" id="frm" action="findId" method="post">
+        <h2>아이디 찾기</h2>
+        이름 : <input type="text" name="name" id="name">
+        <button type='button' onclick="check()">Submit</button>
+    </form>
+    <hr color="red">
+    <!--[1]-->
+    <form action="findPwd.jsp"><!--액션, 메서드가 지정안된 상태 디폴트 get--><!-- name이없음-->
+        <h1>비밀번호 찾기</h1>
+        이름: <input type="text" name="name"><p></p>
+        아이디: <input type="text" name="id"><p></p>
+        <button type="button" onclick="check2()">Submit</button>
+
+</body>
+</html>

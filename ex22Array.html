@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex22Array.html</title>
+</head>
+<body>
+    <h1>배열 - Array</h1>
+    <script>
+        /*[1]literral을 이용해서 배열 객체를 생성하는 방법
+          [2]Array()를 이용하는 방법.
+
+          JS표기법
+          {} : 객체
+          [] : 배열
+       */
+        
+       //[1]literral
+
+        //겍ㅊㅔ 예제 (JSON표기법)
+         let user = {
+            name : '홍길동',
+            age : 22,
+            addr : '부산'
+        }
+        alert(typeof user)//object나옴 ==> 객체
+
+        //배열예제
+        let arr=[10,20,'JavaScript',3.144444,true];// 자료형 구분없이 저장가능하다.
+        alert(typeof arr)//object 나옴,,
+
+
+        //배열 출력 (for루프이용)
+        for(var i = 0 ; i <arr.length; i++){
+            document.write(arr[i]);
+            document.write('<br>');
+        }
+
+        //[2] Array()
+
+        //2_1
+        var arr2=Array();//비어있는 배열 생성
+        alert(arr2.length)//0나옴.
+        arr2[0]="HI";
+        arr2[1]="javascript";
+        document.write("<br>",arr2,"</br2>");
+
+        //2_2
+        var arr3=Array(3);//Array(배열크기)
+        arr3.push(100);//배열의 제일 끝에 저장한다.
+        console.log('arr3.length='+arr3.length);
+
+        //2_3
+        var arr4=Array(77,88,92,100);//여러값이들어가면 저장할 값들임.
+
+        for(var j=0;j<arr4.length;j++){
+            document.write('<br>'+arr4[j]);
+        }
+        
+    </script>
+    <hr color="red">
+    <script>
+        //for in 루프문 이용
+        //for() 속성 in 객체|배열)
+        for(var o in arr4)//k=> 배열의 인덱스
+        {
+            document.write(`<h3>${arr4[o]}</h3>`)
+        }
+
+        for(var attr in user){
+            document.write(`<h3>${attr} :${user[attr]} </h3>`)
+        }
+
+
+        // 배열의 함수
+        //- forEach(함수 (value, index))
+        arr4.forEach(function(value,i){
+            document.write(`<h3 style="color:red">${value}=>${i}</h3>`)
+        })
+        //배열에 저장된 요소 (item)를 알아서 반복을 돌며 callback함수의 매개변수에 전달한다.
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">  
+  <title>ex18BOM_history객체.html</title>
+  <script>
+    /*location객체의 속성
+        [1] href : 현재 페이지의 url값
+        [2] hostname : 웹호스트의 도메인명을 반환
+        [3] pathname : 현재 페이지의 경로명과 파일명을 반환
+        [4] protocol : 현재 페이지의 프로토콜
+         location의 함수
+        [5] assign('파일명 또는 url') : 새로운 문서를 로드한다.
+        [6] reload() : 새로고침
+        */
+
+   
+    window.onload=()=>{
+        let b1=document.getElementById('b1');
+        let b2=document.querySelector('#b2');
+        let msg=document.querySelector('#msg');//div영역
+
+        b1.onclick=()=>{//버튼 클릭시 
+            let str=`<h2>${window.location.href}</h2>
+            <h2>${location.hostname}</h2>
+            <h2>${location.pathname}</h2>
+            <h2>${location.protocol}</h2>
+            <h2>${location.port}</h2>
+            `;//port번호는 5500 mysql은 3306
+            // document.write(str);//docu에 str을 출력하게=>새로운 창에서 나옴.
+            msg.innerHTML=str;//앞에서 생성한 msg에 str을 넣음.
+        }
+
+         //id가 b2을 클릭하면 구글페이지로 이동시키되 2초뒤에 이동.
+        b2.onclick=()=>{
+            setTimeout(() => {
+                location.href='https://www.google.com';
+            }, 2000);
+        }
+    }//onload----------------------------------------------
+
+    function newPage(){
+        //assign() 이용해서 ex01.html페이지를 로드시키기.
+        location.assign('ex01.html');
+    }
+
+    function refresh(){
+        console.log('reload()함수 수행 예정')
+        setTimeout(()=>{
+            location.reload();// reload()는 페이지 새로고침이다 .
+                                //console.log가 버튼 누르면 사라짐 확인가능.
+        },3000)
+    }
+
+    
+  </script>
+ </head>
+ <body>
+<h1>BOM- window.location객체</h1>
+    <button id="b1">location객체의 속성 살펴보기</button>
+    <button id="b2">구글 페이지로 이동</button>
+    <button onclick="newPage()">새로운 페이지</button>
+    <button onclick="refresh()">3초 뒤에 새로고침</button>
+    <button onclick="go()">3초후 페이지 이동</button>
+    <hr color='red'>
+    <div id="msg">
+
+    </div>

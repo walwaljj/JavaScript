@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex23Array.html</title>
+</head>
+<body>
+    <h1>Array메소드</h1>
+    <h3>push(): 배열에 새로운 요소를 마지막에 추가한다.</h3>
+    <h3>concat(): 배열의 요소를 모두 합쳐 배열을 만들어 리턴한다.</h3>
+    <h3>join(): 배열 안의 모든 요소를 문자열로 만들어 반환한다.</h3>
+    <h3>pop(): 배열의 마지막 요소를 제거하고 반환한다.</h3>
+    <h3>shift(): 배열의 첫번째 요소를 제거하고 반환한다.</h3>
+    <h3>sort() : 오름차순으로 정렬하여 반환한다.</h3>
+    <hr>
+
+    <script>
+        const a=10;//const : 변경되지 않는 상수.
+        // alert(a);
+        // a='o';//상수의 값을 변경하려 해서 아래 수행문이 실행안됨
+
+        const fruits=["Banana","Apple","Orange","Mango"];
+        //[1] Kiwi를 배열 마지막에 추가한 뒤에 forEach()함수를 이용해 모두 출력하기
+        fruits.push("kiwi");
+        fruits.forEach(function(value){
+            document.write(value+"<br>")
+        })
+        let str = fruits.join("#");// join을 이용해 배열의 모든요소를 하나로 만들어주고(문자)<=문자도 추가해줌
+        document.write(`<h3>${str}</h3>`);
+    
+        //첫번째 요소를 삭제후 배열을 출력하기
+        let obj = fruits.shift();
+        document.write(`삭제한 요소:${obj}<h3>${fruits}</h3>`)
+
+        //첫번째에 추가 : unshift()
+        fruits.unshift('lemon');
+        document.write(fruits+'<br>');
+
+        //맨 마지막 요소를 삭제하기
+        fruits.pop();
+        document.write(fruits);
+
+        //중간삭제  : delete 연산자
+        delete fruits[2];
+        document.write(fruits+'<br>');
+        //중간삭제  :splice(시작 인덱스,[삭제 개수],[새로 추가할 요소])를 이용한 삭제
+        fruits.splice(1,[1],"Water Melon");
+        document.write(fruits+'<br>');
+
+        let drinks=["juice","Coke","Coffee"];
+        
+        arr=fruits.concat(drinks);//concat은 배열을 변수에 담아출력해야함.
+        document.write(arr+"<br>");
+
+        fruits.concat(drinks);
+        document.write(fruits);//원본은 안바뀜.
+
+    </script>
+    <h3>slice(): 배열의 일부를 조각내어 새로운 배열로 반환한다</h3>
+    <h3>splice(): 요소에 지정한 부분을 삭제하고 삭제한 요소를 반환한다.</h3>
+    <hr>
+    <script>
+        //push(), splice()
+        //arr의 인덱스 3부터 6의 직전까지 조각내어 새로운 배열에 넣고,
+        //잘라낸 3-6을 출력
+        //slice(start , end+1 )
+
+        let arr2=arr.slice(3,6);
+        document.write(`<h3>${arr2}</h3>`)
+    </script>
+
+
+</body>
+</html>
