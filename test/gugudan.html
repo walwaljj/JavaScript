@@ -8,7 +8,10 @@
     <style>
         div{
             border: solid black;
-            
+            display: inline-block;
+            padding: 30px;
+            margin: 5px;
+            text-align: center;
         }
     </style>
 </head>
@@ -16,9 +19,10 @@
     
     <script>
         
-        
+
         for(var i=1;i<10;i++){
             document.write("<div>")
+                document.write("<h1>"+i+"단</h1>")
             for(var j=1; j<10; j++){
                  document.write(`${i}x${j}=${i*j}<br>`);
             }

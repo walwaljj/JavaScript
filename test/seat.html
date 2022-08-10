@@ -20,7 +20,20 @@
             }else{
                 rowNum=parseInt(memNum/colNum)+1
             }
-            document.write(`${rowNum} 줄이 필요합니다.`);
+            // document.write(`${rowNum} 줄이 필요합니다.`);
+
+            document.write("<table border='1px solid black'>");
+            for(var i=0;i<rowNum;i++){
+                document.write("<tr>");
+                for(var j=1;j<=colNum;j++){
+                    seatNo = i*colNum+j;
+                    if(seatNo > memNum) 
+                        break;
+                    document.write("<td> 좌석"+seatNo+"</td>");
+                }
+                document.write("</tr>");
+            }
+            document.write("</table>");
             
             
         </script>
