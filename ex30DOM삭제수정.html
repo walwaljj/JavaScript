@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>DOM - 삭제, 수정</h1>
+    <ul id="menu">
+        <li>HTML</li>
+        <li id='css'>CSS</li>
+        <li id='js'>JavaScript</li>
+        <li>jQuery</li>
+    </ul>
+    <hr>
+    <button onclick="del()">dom 삭제</button>
+    <button onclick="del2()">dom 삭제2</button>
+	<button onclick='edit()'>dom수정1</button>
+    <script>
+        function del(){ // 부모요소.removeChild(삭제할요소)
+            //삭제 : 삭제시 부모의 아이디를 먼저 얻어야함.
+            let parent=document.getElementById('name');
+            let obj=document.getElementById('css');
+            parent.removeChild(obj);
+        }   
+
+        //parentNode : 선택 요소의 부모 노드를 찾아준다.
+        function del2(){
+            let child=document.getElementById('js');
+            child.parentNode.removeChild(child);
+        }
+
+        //부모요소.replaceChild(new,old): 부모요소 중 old인 요소를 찾아 new로 대체한다.
+        function edit(){
+            //jQuery를 찾아서 Ajax 로 수정하세요
+            let liAll=document.querySelectorAll('li');
+            let last=liAll[liAll.length-1];//index는 0부터 시작하니 길이-1은 index중 제일뒤
+        
+            let newLi=document.createElement('li');
+            let txt=document.createTextNode('Ajax');
+            newLi.appendChild(txt);
+
+            last.parentElement.replaceChild(newLi,last);
+        }
+    </script>
+</body>
+</html>

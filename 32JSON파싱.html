@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>JSON.stringify(), JSON.parse()</h1>
+    <h2>stringify(): JSON객체를 문자열로 변환하는 함수</h2>
+    <h2>parse(): 문자열을 JSON객체로 변환하는 함수</h2>
+    <div id="result"></div>
+    <hr>
+    
+    <button>JSON객체 생성하기</button>
+    <button>문자열을 json객체로 만들기</button>
+    <button>Ajax요청보내 json객체 받아오기</button>
+
+    <script>
+        let btAll = document.querySelectorAll('button');
+        let result=document.querySelector('#result');
+        btAll[0].onclick=function(){
+            let movie={//속성명은 파일로 사용할때 ""꼭들어가야함
+                'title':"한산",
+                "actor":"박해일",
+                "poster":"m2.png"
+            }
+            console.log('movie의 typeof: ', typeof movie); //object
+            result.innerHTML=`<h1>${movie['title']}, 배우: ${movie.actor}</h1>`
+        }//-----------------------------------
+
+        btAll[1].onclick=function(){
+        let str='{"title":"헌트","actor":"이정재","poster":"m1.png"}';
+            alert(typeof str);// string나옴
+
+            //문자열을 json객체로 변환하는 함수 : 객체 = JSON.parse(문자열)
+            //json객체를 문자열로 만들어주는 함수 : JSON.stringify(객체)
+            let jsonObj = JSON.parse(str);
+            console.log('jsonObj typeof',typeof jsonObj);
+            result.innerHTML=`<h2>${jsonObj.title},${jsonObj['poster']}</h2>`;
+
+        }//-----------------------------------------------------------------------
+        
+        //Ajax 요청을 보낼수 있는 객체
+        let xhr=new XMLHttpRequest(); // 서버에 파일을 
+        btAll[2].onclick=function(){
+
+            xhr.open('get','ex32Data.json')// 서버에 준비를 요청하는 함수
+
+            xhr.onreadystatechange=function(){//서버에서 요청을 보내면 응답(상태변화가 일어남 ) ==> 
+                                            // 상태변화가 일어나면 함수를 실행해라/
+                // alert(xhr.readyState+"/"+xhr.status) // 알림이 ..,4 에서 멈추는데 4인 시점이 최종적으로 응답이 온 시점.
+                                                    //
+                if(xhr.readyState==4&& xhr.status==200){
+                    //응답 데이터 받기
+                    let txt=xhr.responseText;// string이기때문에 json으로 변환하고자할때 아래처럼한다.
+                    // alert(txt);
+                    //txt를 json객체로 반환해서 id가 result인곳에 제목,배우
+                    //문자열로 출력하고 poster는 이미지
+                    let obj=JSON.parse(txt);
+                    let str=`
+                        <div>
+                            <img src="images/${obj.poster}"><br>
+                            <h4>${obj.title}</h4>
+                            <h5>주연배우:${obj.actor}</h5>
+                        </div>
+                    
+                    `
+                    result.innerHTML=str;
+                    
+                }
+
+            }
+
+            xhr.send(null)//네트워크로 요청을 서버에 보내는 함수.
+                        //  get방식일때는 send()에 null을 넘긴다.
+                        //  post방식일땐ㄴ 요청 파라미터 데이터를 send()함수에 전달한다.
+
+        }
+
+    </script>
+
+</body>
+</html>

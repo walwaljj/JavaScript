@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>DOM - 새로운 Element 를 생성해서 추가해보자.</h1>
+    <button id='bt1'>새로운 요소 생성1</button>
+    <button id='bt2'>새로운 요소 생성2</button>
+    <hr color='red'>
+    <div id="result">
+
+    </div>
+    <script>
+        let bt1=document.getElementById('bt1');
+        let bt2=document.getElementById('bt2');
+        let result=document.getElementById('result');
+
+        //bt1에 클릭시 이미지 넣는 이벤트 처리
+        bt1.addEventListener('click',function(){// onclick 대신 이밴트핸들러(이벤트, 함수(){실행내용})
+            let str=`<img src='/images/m1.png'>`;
+            result.innerHTML=str;
+        })
+
+        //br2클릭시 이미지 추가하기
+        //createElement('엘리먼트명'):새로운 엘리먼트를 생성
+        //createText('텍스트'): 새로운 텍스트를 생성
+        //부모요소.appendChild (앨리먼트객체)  : 부모요소에 붙는다.
+        //부모요소insertBefore(앨리먼트객체, target ): target앞에 붙이기
+        //속성추가시 : 요소,setAttribute('css속성','속성값'); : 뒤에 세미콜론이 무조건 들어가야함.
+
+        bt2.onclick=function(){//bt2가 클릭될때 일어나는 함수
+            let objH2 = document.createElement('h2');//<h2>태그가 만들어짐
+            let txt = document.createTextNode('Hello JavaScreipt');//txt에 text속성node를 만들어 ('Hello JavaScreipt')를 넣는다.
+
+            objH2.appendChild(txt);//만들어진 <h2>태그에 txt내용('Hello JavaScreipt')을 붙힌다.
+            result.appendChild(objH2);//div(result)에 objH2를 넣는다.
+
+            //h2에 style 속성 추가해서 글자색 주기
+            objH2.setAttribute('style','color:maroon')//또는 objH2.style.color='blue';
+
+            //img 엘리먼트 생성한 뒤에 속성값 지정하고 result인 곳에 붙이기
+            let img=document.createElement('img');
+            img.setAttribute('src','images/m3.png');
+            img.setAttribute('width','150px')
+            img.setAttribute('height','220px')
+            
+            // result.appendChild(img);
+
+            result.insertBefore(img,objH2);
+            // let img=`<img src='/images/m2.png'>`;
+            // result.innerHTML=img;
+        }
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*event처리 방법
+        [1] html태그 내에서 이벤트 핸들러를 기술하는 방법
+        [2] literal방식으로 이벤트 핸들러를 기술
+        [3] addEventListener (이벤트 종류,핸들러 함수)
+        */
+        window.onload=init;// 윈도우가 로드되면 init을 실행하라
+
+        function init(){
+            // alert('init')
+
+
+
+            /*[2] literal방식(값을 넣어주는 방식)으로 이벤트 핸들러를 기술*/
+
+            //class 가 e1인 요소 중 2번째 요소를 참조하기.
+
+            //ㄴdocument의 getElementsByClassName('클래스이름') : =>
+            //             querySelectorAll('.클래스명')
+
+            
+            let obj2=document.getElementsByClassName('e1');// class e1을 모두불러옴.
+            obj2[1].onclick=function(){//배열과 같이 e1의 2번쨰 ,즉 index [1]이 inclick 상태일때 함수를 부름. 
+                // alert('Hi');
+                this.style.backgroundColor='purple';
+                this.style.color='white'
+            }
+
+            /*[3] addEventListener (이벤트 종류,핸들러 함수)*/
+            //3번째 버튼을 더블클릭시 글자색을 red로 변경하기
+            obj2[2].addEventListener('dblclick',function(){//이벤트 발생요소.addEventListener(이벤트,함수(){실행문})
+                this.style.color='red';
+            })
+
+        }
+        
+    </script>
+</head>
+<body>
+    <!-- [1]html태그 내에서 이벤트 핸들러를 기술하는 방법-->
+    <h1 class="e1" onmouseover="this.style.border='2px dashed blue'"
+    onmouseout="this.style.border=''">이벤트 처리1</h1><!-- this.은 h1을 가리킴-->
+
+    <h1 class="e1">이벤트 처리2</h1><!-- index가 배열과 같아 두번째 버튼은 인덱스 1임.-->
+    <h1 class="e1">이벤트 처리3</h1>
+</body>
+</html>

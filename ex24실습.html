@@ -17,8 +17,21 @@
             text-align: center;
             /* border: thick salmon solid; */
         }
-        button{
-            
+        div#btns{/*div 가로 및 버튼 수평중앙 맞추기*/
+            width : 50%;
+            margin: auto;
+            /* border: 1px solid white; */
+            text-align: center;   
+            padding: 5px; 
+        }
+        div#btns button{
+            width:  120px;
+            height: 30px;
+        }
+        div#movies img{/*기준이미지에 모든 이미지요소 크기 맞추기*/
+            width:150px;
+            height: 212.5px;
+            border: double orange 2px;
         }
     </style>
 </head>
@@ -35,23 +48,72 @@
         <script>
             //[1] 현재 상영중인 영화 이미지들 5개를 배열에 저장하세요.
             
-            let array =["../WEB/images/m1.png","../WEB/images/m2.png",
-            "../WEB/images/m3.png","../WEB/images/m4.png","../WEB/images/m5.png"];
+            let movies =["m1.png","m2.png","m3.png","m4.png","m5.png"];
 
-            for(var i = 0 ; i < array.length ; i++){
-                 document.write(`<img src= ${array[i]}>`);
-            }
+            // for(var i = 0 ; i < movies.length ; i++){
+            //      document.write(`<img src= ${movies[i]}>`);
+            // }
             
             //[2] 현재 상영작 버튼을 누르면 배열에 저장한 영화 이미지를
             //id가 movies인 곳에 나타나도록 처리하세요
             //innerHTML 속성 이용해서 img태그를 id가 movies인 곳에 삽입하기.
             //현재상영작을 누르면, movies div에 들어가게, 미리들어ㅏ면안됨.
+            
+            let btn1=document.getElementById('btn1');//btn1을 변수 btn1에 넣음
+            let divMovies=document.querySelector('#movies');//div의 movies를 변수divMovies에 저장.
+            let btnPlay=document.querySelector('#btnPlay');
+            let btnStop=document.querySelector('#btnStop');
+            let wid=null;
+            let x=20;//x 좌표
+            let i=1;//x 좌표값의 증가치
 
-
+            btn1.onclick=function(){//변수 btn1을 누를때 함수실행,
+                let str=``; //이미지를 담을 변수 (빈문자열)선언
+                movies.forEach(function(movie){//movies배열을 출력한다.
+                    console.log(movie);
+                    str+=`<img src="images/${movie}">`;
+                })
+                divMovies.innerHTML=str;
+            }
+            // btn1.onclick=function(){
+            //     let str = `<img src = "images/m1.png">` //str에 img를 넣어주고
+            //     // divMovies.innerText=str;// divMovies.innerText을이용해서 divMovies에 str을넣음<=text형
+            //     divMovies.innerHTML=str;// divMovies.innerHTML을이용해서 divMovies에 str을넣음
+            // }
             //[3]play ▶ 버튼을 누르면 영화 이미지들이 오른쪽으로 이동하도록 하세요
             //    오른쪽 끝으로 다 이동하면 다시 왼쪽으로 이동시키고,
             //    왼쪽 끝에 이동하면 다시 오른쪽으로 이동시키세요
 
+            btnPlay.onclick=function(){
+                
+                divMovies.style.position='absolute';// div의 스타일-포지션을 
+                if(wid==null){ 
+                wid=setInterval(function(){
+                    // }if(x<300){
+                    //     x--; // 299가될때 다시 오른쪽으로 가려함.
+                    // }
+                    if(x>300){//x>document.body.clientWidth 는 띄워진 창끝까지로  범위를 줌
+                                //그 후 이미지 전체길이만큼 빼주면 이미지 끝에서 끝이남. 
+                                //ex document.body.clientWidth-750
+                        i=-1;// i의 값을 -1로 초기화.
+                    }
+                    if(x<20){
+                        i=1;
+                    }
+
+                    divMovies.style.left=x+"px";
+                    x+=i;
+    
+                }, 10);
+            }//--------------------------------------
+         } 
+              btnStop.onclick=function(){
+                if(wid!=null){
+                    clearInterval(wid);
+                    wid=null;
+                }
+
+            }//--------------------------------------
         </script>
     </div>
 </body>

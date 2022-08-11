@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- jQuery라이브러리를 cdn방식으로 참조함.-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!--  ---------------------------------------------------------------------------------  -->
+    <script>
+        window.onload=function(){
+            document.getElementById('a').innerHTML=`<h2>JavaScript</h1>`
+
+        }//jQuery방식
+        //window.jQuery = window.$ = jQuery 객체를 =$로 축약해사용
+
+        $(document).ready(function(){// docu가 준비되면 함수를 실행하란뜻
+
+            //id가 b인 요소 선택해서 jQuery를 넣어보기
+            $('#b').html('<h1>jQuery</h1>')//=같음=>  document.getElementById('a').innerHTML=`<h2>JavaScript</h1>`
+                  .css('color','tomato')//.으로 문장을 계속 이어나가면된다.
+                  .css('border','2px dashed skyblue')
+        })
+
+        $(function(){//=같다= $(document).ready(function(){ 
+            //id가 c인 요소를 찾아서 Bye Bye를 넣고 css스타일
+            $('#c').html('<h2>Bye Bye<h2>')
+                    .css('color','green')
+                    .css({
+                        color :'green',
+                        fontSize : '2em',
+                        backgroundColor : 'bisque'})
+                    
+        })
+        
+    </script>
+</head>
+<body>
+    <h1>jQuery 시작하기</h1>
+   <p>jQuery: 자바스크립트 라이브러리</p>
+   <p>1. 다운로드: http://jquery.com<br>
+               http://jqueryui.com[확장 기능 제공]<br>
+      2. CDN방식: Content Delivery Network           
+   
+   </p>
+   <hr color ="pink">
+    <div id="a"></div>
+    <div id="b"></div>
+    <div id="c"></div>
+    <hr color ="purple">
+    <button class="btn">ajax 요청보내기</button>
+    <script>
+        /*
+            $.ajax({
+                type :"요청방식",
+                url  : "요청url",
+                dataType : '응답유형',
+                success : function(res){실행문},
+                error:function(err){...}
+            })
+        */
+        //제이쿼리를 넣으면 제이쿼리방식으로 이벤트헨들러를 씀.
+        $(function(){
+            $('.btn').click(function(){//핸들러를 매개변수로줌
+                alert("hi")
+                $.ajax({
+                    type : 'get', 
+                    url : 'ex32Data.json',
+                    dataType:'json',
+                    success:function(res){
+                        //성공적으로 응답이 왔을 때
+                        //alert(res) --> object으로뜸 : 성공적으로 받아온것.
+                        alert(res.title)// 비상선언 잘받아옴.
+                        $('#a').html(`
+                            <h1>${res.title}</h1>
+                            <h1>${res.actor}</h1>
+                            <img src="images/${res.poster}"
+                        `)
+                    },
+                    error:function(err){
+                        alert('error발생 : '+err.status) 
+                    }
+
+                })
+            })
+        })
+    </script>
+</body>
+</html>

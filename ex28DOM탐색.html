@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>28DOM탐색.html</title>
+</head>
+<body>
+    <h1>DOM [Document Object Model]</h1>
+<h2>DOM이란?</h2>
+<ul>
+	<li>HTML5와 같은 구조화된 문서를 표현하는 방식으로 문서를 객체 개념으로 접근하도록 한다.</li>
+	<li>DOM은 W3C가 정한 공식 표준으로 W3C가 표준화한 여러 API의 기반이 된다.</li>
+	<li>DOM이란 표준에 의거 스크립트 엔진이나 언어가 다르더라도 동일하게 HTML5나
+	XML문서에 접근할 수 있다.</li>
+</ul>
+<HR color="red">
+    <button onclick="change1()">DOM탐색1</button>
+    <button onclick="change2()">DOM탐색2</button>
+<hr color="blue">
+<ul>
+    <li id="html">HTML</li>
+    <li id="css">CSS</li>
+    <li class="js">JavaScript</li>
+    <li class="js">jQuery</li>
+</ul>
+    <script>
+        //1. 아이디로 탐색: getElementById('아이디명')
+        //                 querySelector('#아이디명') 
+
+        //2. 클래스로 탐색: getElementsByClassName('클래스명')
+        //                 querySelectorAll('.클래스명')
+        
+        //3. 태그명으로 탐색: getElementsByTagName('태그명')
+        //                  querySelectorAll('태그명')
+        
+        function change1(){
+            //id가 HTML인 요소를 찾아 글자색변경, 글자크기 두배
+            let html=document.getElementById('html');
+            html.style.color='pink';
+            html.style.fontSize='2em';
+
+            //li를 모두찾아 테두리를 주되 bottom부분에 2px dotted라인으로.
+            
+            let allli=document.getElementsByTagName('li');// 또는 let allli=document.querySelectorAll('li')
+             // alert(typeof allli);-- object
+            // alert(allli.length);-- 7 . 배열처럼 길이가있음 따라서 배열처럼 출력
+           
+            for(let i=0;i<allli.length;i++){
+            allli[i].style.borderBottom='2px dotted green';
+             }
+            }
+        // 클래스가 js인 요소를 모두 찾아서 배경색 hotpink, 글자색: yellow로 주세요
+            function change2(){
+                let alljs=document.getElementsByClassName('js');//또는 let alljs=document.querySelectorAll('.js')
+               for(var i=0;i<alljs.length;i++){
+                alljs[i].style.backgroundColor='hotpink';
+                alljs[i].style.color='yellow';
+            }
+
+        }
+    </script>
+</body>
+</html>

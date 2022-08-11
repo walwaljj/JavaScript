@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 객체 생성 방법
+           1. Object객체를 이용해서 생성하는 방법
+           2. 생성자함수를 이용하는 방법
+           3. literal 표기를 이용하는 방법 ==> JSON <== 중요!!!!!!!!!!!!!1
+        */
+
+        //[1]. Object()내장이용
+        let dog = new Object();//dog객체 생성, Object라는 내장객체를 이용
+        dog.name='짱구';
+        dog.age=1;
+        dog.bark=function(){
+            let s=`${this.name}강아지가 멍멍 짖어요`;//자신의 속성반환시 this.
+            return s;
+        }
+
+        document.write(`<h1>${dog.bark()}</h1>`);
+
+        //[2] 생성자 함수
+        function Cat(name, age){
+            this.name = name; //this.은 객체의 속성
+            this.age = age;
+            this.bark=function(){
+                let s=`${this.name}고양이가 야옹양옹 울어요`;//자신의 속성반환시 this.
+                 return s;
+            }
+        }
+        let cat= new Cat("쫑이",2);// 함수 Cat을메모리에 올려, cat 객체를 생성함.
+        document.write(`<h2>${cat.bark()}</h2>`);
+
+        //***중요** [3]literal방식 json형식 : {} - object / [] - 배열***************
+        let car={
+            name:'K7',
+            color:'black',
+            capacity:3000,
+            /* 함수*/
+            run: function(km){
+                return `${this.name} 자동차가 시속 ${km}km로 달려요`;
+            }
+
+        }  
+        document.write(`<h2>${car.run(100)}</h2>`)
+
+
+    </script>
+</body>
+</html>
