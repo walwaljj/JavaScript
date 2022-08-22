@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var num = prompt("어떤수를 곱해볼까요 ? ");
+        var ttl=1;
+        if(num!=null&&num!=0){
+        document.write(`${num}!은`)
+        while(num!=0){
+            ttl*=num;
+            num--;
+        }document.write(`${ttl}입니다.`)
+    }else(alert("입력을 취소하였습니다."))
+    </script>
+</body>
+</html>

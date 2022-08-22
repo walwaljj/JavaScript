@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var memNum=prompt("입장객 수");
+        var colNum=prompt("한줄에 앉을 사람 수");
+        var rowNum=memNum/colNum+(memNum%colNum!=0 ? 1 :0);
+        document.write(`<h1>자리 배치도</h1><br>모두${parseInt(rowNum)}개의 줄이 필요합니다.`)
+        
+
+        var n=0;
+        document.write("<table>")
+        for(var i =0; i<rowNum; i++){
+            document.write("<tr>")
+            for(var j =0; j <= colNum ; j++){
+                document.write("<td>")
+                seatNo = i * colNum + j;
+                if(seatNo>memNum)
+                break;
+                document.write(seatNo+"</td>");
+            }
+            document.write("</tr>")
+        }document.write("</table>")
+        
+       
+    </script>
+</body>
+</html>
