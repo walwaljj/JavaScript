@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function addNum(a,b){
+            var sum = a+b;
+          document.write(sum);
+        }
+        
+        addNum(10,11);
+        function add(){
+        var num1 = 2 ;
+        var num2 = 3;
+        var sum = num1 + num2;
+        document.write("<br>결과:" +sum);
+        }
+        add();
+        add();
+
+        function addd(){
+            var sum = 10+20;
+            multi = 10*20;
+        }
+        addd();
+        console.log(multi);
+
+        var x =10;
+        function displayNumber(){
+            var y;
+            console.log("x is "+x);
+            console.log("y is "+y);
+            var y =20;
+        }
+        displayNumber();
+
+        function addNumber(num3 , num4){
+            return num3 +num4;
+        }
+        var summ = addNumber(10,20);
+        console.log(summ);
+        summ = 50;
+        console.log(summ);
+        var summ = 100;
+        console.log(summ);
+
+        function calcSum(n){
+            let dum =1;
+            dum = 0;
+            for(let i = 1 ; i < n + 1 ; i ++){
+                dum +=i;
+            }
+            console.log(dum);
+        }
+        calcSum(10);
+        console.log(dum)
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var sum = function(a,b=10){return a+b}
+        // document.write("결과 : " +sum(10))
+
+        // (function(){
+        //     var userName = prompt("이름을 입력하세요");
+        //     document.write("안녕하세요?<span class='accent'>"+ userName+"</span>님");
+        // }());
+
+        (function(a1,b1){
+            sum1 = a1+b1;
+            
+        }(100,200));
+        document.write("<br>"+sum1);
+
+        const hi = function(){
+            return "안녕하세요";
+        }
+
+        const hii=() => {return "안녕"}
+    </script>
+</body>
+</html>

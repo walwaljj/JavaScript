@@ -8,14 +8,12 @@
 </head>
 <body>
     <script>
-        function sumMulti(x,y){
-            let result=0;
-            if(x===y){
-                result = x*y;
-            }else result = x+y;
-            return result;
+        function addNum(num, num1=5, num2=10){
+            var sum = num*num1 + num2;
+            return sum;
         }
-        console.log(sumMulti(10,10));
+        var result = addNum(5,1);
+        document.write(result);
     </script>
 </body>
 </html>

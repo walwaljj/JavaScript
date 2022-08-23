@@ -8,14 +8,17 @@
 </head>
 <body>
     <script>
-        function sumMulti(x,y){
-            let result=0;
-            if(x===y){
-                result = x*y;
-            }else result = x+y;
-            return result;
+        function calcSum(n){
+           
+            let sum=0;
+            for(let i=1;i<n+1;i++){
+                sum +=i;
+            }document.write(sum);
         }
-        console.log(sumMulti(10,10));
+        
+        var n = parseInt(prompt("몇까지 더할까요?"));
+        if(n!=null)
+        calcSum(n)
     </script>
 </body>
 </html>
