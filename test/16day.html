@@ -7,34 +7,34 @@
     <title>Document</title>
     <style>
         div{
-            text-align: center;
-            border: 2px solid black;
+            background-color: rgb(191, 236, 243);
+            border: solid 2px black;
             border-radius: 50%;
-            width: 300px;
-            height: 300px;
-            background-color: powderblue;
+            padding: 30px;
+            text-align: center;
+            width: 200px;
+            height: 200px;
 
         }
-
+        #result{
+            color: red;
+            font-weight: bold;
+            font-size: xx-large;
+        }
     </style>
-    <script>
-        var now=new Date('2020-10-15');
-        var firstDay = new Date('2020-10-01');
-
-        var toNow =now.getTime();
-        var toFirst = firstDay.getTime();
-        var passedTime = toNow - toFirst;
-
-        passdTime = Math.round(passedTime/(1000*60*60*24));
-
-        document.querySelector('#result').innerText = passedTime;
-        
-        
-
-    </script>
 </head>
 <body>
-    <div><h1>책 읽기</h1>
-    <span id="result"></span>일 연속으로<br>책 읽기를 달성했군요.<br><br>축하합니다!</div>
+    <div>
+        <h1>책 읽기</h1>
+        <p ><span id="result"></span>일 연속으로 <br> 책 읽기를 달성했군요. <br><br> 축하합니다!</p>
+    </div>
+    <script>
+       
+        var time = new Date("2022-08-25");
+        var first = new Date("2022-06-27")
+        var r = time.getTime()-first.getTime();
+        var result=Math.round(r/86400/1000);
+        document.querySelector('#result').innerText=result;
+    </script>
 </body>
 </html>

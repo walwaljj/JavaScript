@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            background-color: lightcyan;
+            border: solid black 1px;
+            width: 500px;
+            padding: 5px;
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>당첨자 발표</h1>
+    </div>
+     <button onclick="javascript : window.close()">
+        닫기
+     </button>
+    <script>
+        var ttlPax = prompt("전체 응모자 수");
+        document.write("전체 응모자 수 :"+ttlPax+"명");
+        var ran = Math.round(Math.random()*ttlPax)+1;
+        document.write("<br>당첨자 : "+ran+"번");
+        
+        function openpop(){
+            
+        var pop= window.open("http://www.naver.com","네이버","width=400","heigh=400", left=600);
+        if(pop==null){
+            alert("팝업이 차단되어있어요");
+        }
+            
+        }openpop();
+    </script>
+</body>
+</html>
