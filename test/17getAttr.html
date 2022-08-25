@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="prod-pic">
+        <a href="#" id="click" onclick="big()">
+            <img src="../images/1.png" alt="에티오피아 게뎁" 
+        id="cup" width="200"hight="200" onclick="displaySrc()"></a>
+    
+    </div>
+    <script>
+        function displaySrc(){
+            var cup = document.querySelector("#cup");
+            alert("이미지 소스 : "+cup.getAttribute("src"));
+        }
+        function big(){
+            var big = document.querySelector('#click');
+            big.getAttribute("img").style="width=400px"
+        }
+    </script>
+</body>
+</html>
