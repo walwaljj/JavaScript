@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{
+            list-style-type: none;
+        }
+        li{
+            display: inline-block;
+        }
+        li>img{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <ul>
+            <li><img src="../images/1.png" data-src="../images/1.png"class="pic"></li>
+            <li><img src="../images/2.png" data-src="../images/2.png"class="pic"></li>
+            <li><img src="../images/3.png" data-src="../images/3.png"class="pic"></li>
+            <li><img src="../images/4.png" data-src="../images/4.png"class="pic"></li>
+        </ul>
+    </div>
+    <div class="lightbox"><img src="../images/1.png" alt="" class="lightboxImage"></div>
+    <script>
+        var pic=document.querySelectorAll(".pic");
+        var lightboxImage=document.querySelector(".lightboxImage");
+        var lightbox = document.querySelector(".lightbox");
+        for(i=0;i<pic.length;i++){
+            pic[i].addEventListener("click",showLightbox);
+        }
+        
+        function showLightbox(){
+            var big = this.getAttribute("data-src");
+            lightboxImage.setAttribute("src",big);
+            lightbox.style.display="block";
+        }
+        lightbox.onclick=function(){
+            lightbox.style.display = "none";
+        }
+        
+     
+    </script>
+</body>
+</html>
