@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="join">
+        <h1>WEB PROGRAMMING</h1>
+        <p>공부할 주제를 기록해 보세요</p>
+        
+        <label for="#text"></label>
+        <input type="text" id="text">
+        <label for="#add"></label>
+        <input type="submit" value="추가" id="add" onclick="newReg();return false;">
+        </div>
+        <div >
+        <ul id="itemList">
+ 
+        </ul></div>
+    </form>
+    <script>
+
+        function newReg(){
+        var newItem = document.createElement("li")
+        var text = document.querySelector("#text");
+        var tvalue = document.createTextNode(text.value);
+        
+        newItem.appendChild(tvalue);
+
+        var itemList = document.querySelector("#itemList");
+        itemList.appendChild(tvalue,itemList.childNodes[0]);
+    
+        text.value="";
+
+        var items = document.querySelectorAll("li");
+        for(i = 0; i< items.length ; i++){
+            items[i].addEventListener("click",function(){
+                if(this.parentNode)
+                    this.parentNode.removeChild(this);
+            });
+        }
+        
+        
+        }
+        
+    </script>
+</body>
+</html>
