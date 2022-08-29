@@ -22,7 +22,7 @@
     switch(str){
         case "네이버" :
             url='https://www.naver.com/'
-        break;
+              break;
         case "구글" :
             url='https://www.google.com/'
             break;
@@ -36,13 +36,13 @@
     document.write(url) //여기까지하면 페이지에 url 이 단순 문자로 뜬다.
 
     //html에서 연결주소로 바뀜.
-    // location.href=url;
+    location.href=url;
 
     //팝업으로 띄우기 
-    // let win=window.open(url,"popup","width=500,height=500")//popup은 그냥 참조할 객체명 
+    // let win=window.open(url,"popup","width=500,height=500")//popup은 그냥 참조할 객체명, 뒤에 팝업창 크기를 정하면 팝업으로 뜬다.
 
     //작성한html + 새탭
-        window.open(url,"_blank");
+       // window.open(url,"_blank");//let win=window.open(url,"popup")//두개가 같음 새탭을 띄움 + window.open(url)이 새탭을 띄우는 메서드인듯.
 
     // location.target='_blank'; // 새탭띄워서 url이동?  아닌듯..location.href=url;가 있어서 실행하는듯..
 </script>
