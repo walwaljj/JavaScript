@@ -39,6 +39,7 @@
         function stop(){
             if(wid!=null)//null인데 함수가 실행되면 에러가남. 방지하기위해!
                 window.clearInterval(wid);
+                //]stop을 실행하면 win의 timer가 clear되고 , null인상태는 아니기때문에 move버튼으로 움직이지않음.
         }
 
 
@@ -63,7 +64,7 @@
     
         function moveStop(){
             if(wid!=null)
-                window.clearInterval(wid);       // 여기까지 했을때 wid가null이라   
+                window.clearInterval(wid);       // 여기까지 했을때 wid가null이 아니기 떄문에   
                 wid=null;//을 해주면 move조건에 맞아 다시 move를 시작함.   
         }
     </script>

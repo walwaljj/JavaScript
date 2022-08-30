@@ -24,10 +24,10 @@
                 frm.name.select();
                 return;
             }
-            // alert(frm.action);//getter 
-            // alert(frm.method);
-            frm.action='idFind.jsp';//setter
-            frm.method='get';//: 사용자가 입력한 방식이 주소창에 나옴.
+            // alert(frm.action);//getter 결과 : findId <form name="frm"... action="findId" ...>
+            // alert(frm.method);//결과 ㅣ post --><form name="frm" ...method="post">
+            frm.action='findI.jsp';//setter  주소창에 findI까지나옴,
+            frm.method='get';//: 사용자가 입력한 방식이 주소창에 나옴. 반대는 post 주소창에 나오지않음.
             frm.submit();
         }//check()---------------------------------------------------
 
@@ -46,7 +46,7 @@
             }
             
             f.method='post';
-            f.submit();//type을 버튼으로 줬기 때문
+            // f.submit();//type을 버튼으로 줬기 때문 => 디폴트가 빈 버튼 sumbit등 동작 지정안하면 넘어가지않음
 
         }//check2()-------------------------------------------------
     </script>
