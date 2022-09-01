@@ -43,14 +43,14 @@
             objH2.setAttribute('style','color:maroon')//또는 objH2.style.color='blue';
 
             //img 엘리먼트 생성한 뒤에 속성값 지정하고 result인 곳에 붙이기
-            let img=document.createElement('img');
-            img.setAttribute('src','images/m3.png');
+            let img=document.createElement('img');//생성할 요소 ('  ')
+            img.setAttribute('src','images/m3.png');//요소에 추가할 css속성, 속성값
             img.setAttribute('width','150px')
             img.setAttribute('height','220px')
             
             // result.appendChild(img);
 
-            result.insertBefore(img,objH2);
+            result.insertBefore(img,objH2);//h2태그 앞에 img붙히기
             // let img=`<img src='/images/m2.png'>`;
             // result.innerHTML=img;
         }

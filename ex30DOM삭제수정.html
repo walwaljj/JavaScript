@@ -21,26 +21,28 @@
     <script>
         function del(){ // 부모요소.removeChild(삭제할요소)
             //삭제 : 삭제시 부모의 아이디를 먼저 얻어야함.
-            let parent=document.getElementById('name');
-            let obj=document.getElementById('css');
-            parent.removeChild(obj);
+
+            //li중 css삭제 
+            let parent=document.getElementById('menu');// 부모요소 담기 (li의 부모요소는 ul)
+            let obj=document.getElementById('css');//삭제할 요소 담기.
+            parent.removeChild(obj);//부모에게서 삭제할 자식요소를 찾아 지우겠다
         }   
 
         //parentNode : 선택 요소의 부모 노드를 찾아준다.
         function del2(){
-            let child=document.getElementById('js');
-            child.parentNode.removeChild(child);
+            let child=document.getElementById('js');//삭제할 자식요소를 담음
+            child.parentNode.removeChild(child);//자식.parentNode로 부모를 찾고 .removeChild 로 담았던(자식요소)를 삭제한다
         }
 
         //부모요소.replaceChild(new,old): 부모요소 중 old인 요소를 찾아 new로 대체한다.
         function edit(){
             //jQuery를 찾아서 Ajax 로 수정하세요
-            let liAll=document.querySelectorAll('li');
-            let last=liAll[liAll.length-1];//index는 0부터 시작하니 길이-1은 index중 제일뒤
+            let liAll=document.querySelectorAll('li');//자식요소를 담음(all로 담았기 때문에 배열형태?)
+            let last=liAll[liAll.length-1];//last에 변경할old 요소의 index값을 담아준다. index는 0부터 시작하니 길이-1은 index중 제일뒤
         
-            let newLi=document.createElement('li');
-            let txt=document.createTextNode('Ajax');
-            newLi.appendChild(txt);
+            let newLi=document.createElement('li');//새로운 내용을 담을 요소 생성
+            let txt=document.createTextNode('Ajax');//요소에 담을 텍스트노드 생성
+            newLi.appendChild(txt);//틀이될 요소가 부모가되고 txt를 자식요소로 담아줌.
 
             last.parentElement.replaceChild(newLi,last);
         }

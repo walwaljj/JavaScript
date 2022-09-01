@@ -25,11 +25,11 @@
             age : 22,
             addr : '부산'
         }
-        alert(typeof user)//object나옴 ==> 객체
+        // alert(typeof user)//object나옴 ==> 객체
 
         //배열예제
         let arr=[10,20,'JavaScript',3.144444,true];// 자료형 구분없이 저장가능하다.
-        alert(typeof arr)//object 나옴,,
+        // alert(typeof arr)//object 나옴,,
 
 
         //배열 출력 (for루프이용)
@@ -42,10 +42,10 @@
 
         //2_1
         var arr2=Array();//비어있는 배열 생성
-        alert(arr2.length)//0나옴.
+        // alert(arr2.length)//0나옴.
         arr2[0]="HI";
         arr2[1]="javascript";
-        document.write("<br>",arr2,"</br2>");
+        document.write("<br>",arr2,"</br2>");//문자열이라 바로 출력되는듯
 
         //2_2
         var arr3=Array(3);//Array(배열크기)
@@ -64,20 +64,21 @@
     <script>
         //for in 루프문 이용
         //for() 속성 in 객체|배열)
-        for(var o in arr4)//k=> 배열의 인덱스
+        for(var _ in arr4)//k=> 배열의 인덱스
         {
-            document.write(`<h3>${arr4[o]}</h3>`)
+            document.write(`<h3>${arr4[_]}</h3>`)//var뒤에 어떤문자가 오던 상관ㅇ벗는듯 숫자는안댐
         }
 
-        for(var attr in user){
-            document.write(`<h3>${attr} :${user[attr]} </h3>`)
+        for(var a in user){
+            document.write(`<h3>${a} :${user[a]} </h3>`)
         }
 
 
         // 배열의 함수
-        //- forEach(함수 (value, index))
-        arr4.forEach(function(value,i){
-            document.write(`<h3 style="color:red">${value}=>${i}</h3>`)
+        //- forEach(함수 (value, index)) 괄호안 변수는 어떠한 문자열이 오든 상관없다.
+        //매개변수 하나이상오면됨 두개중 하나 생략가능  
+        arr4.forEach(function(valu,f){
+            document.write(`<h3 style="color:red">${valu}=>${f}</h3>`)
         })
         //배열에 저장된 요소 (item)를 알아서 반복을 돌며 callback함수의 매개변수에 전달한다.
         

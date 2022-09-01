@@ -44,11 +44,13 @@
             //li를 모두찾아 테두리를 주되 bottom부분에 2px dotted라인으로.
             
             let allli=document.getElementsByTagName('li');// 또는 let allli=document.querySelectorAll('li')
+            //li요소가 여러개이기 때문에 반복문으로 돌리는듯?
+            
              // alert(typeof allli);-- object
             // alert(allli.length);-- 7 . 배열처럼 길이가있음 따라서 배열처럼 출력
            
             for(let i=0;i<allli.length;i++){
-            allli[i].style.borderBottom='2px dotted green';
+            allli[i+2].style.borderBottom='2px dotted green';
              }
             }
         // 클래스가 js인 요소를 모두 찾아서 배경색 hotpink, 글자색: yellow로 주세요
