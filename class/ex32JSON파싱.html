@@ -18,7 +18,7 @@
     <button>Ajax요청보내 json객체 받아오기</button>
 
     <script>
-        let btAll = document.querySelectorAll('button');
+        let btAll = document.querySelectorAll('button');//모든 버튼을 불러옴 btall은 배열형태로접근
         let result=document.querySelector('#result');
         btAll[0].onclick=function(){
             let movie={//속성명은 파일로 사용할때 ""꼭들어가야함
@@ -27,7 +27,7 @@
                 "poster":"m2.png"
             }
             console.log('movie의 typeof: ', typeof movie); //object
-            result.innerHTML=`<h1>${movie['title']}, 배우: ${movie.actor}</h1>`
+            result.innerHTML=`<h1>${movie['title']}, 배우: ${movie.actor}, ${movie.poster}</h1>`
         }//-----------------------------------
 
         btAll[1].onclick=function(){

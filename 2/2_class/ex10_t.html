@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+    //[1] for루프 이용해서 구구단을 출력하세요
+    //    단, table태그를 이용해서 테이블 형태로 출력하세요
+    //[2] 입력받은 단이 짝수단이면 테이블 배경색을 yellow로 주고
+    //     홀수단이면 lime색으로 주세요
+    let dan = parseInt(prompt("구구단 입력"))
+
+    var cr = (dan % 2 == 0) ? "yellow" : "lime";
+
+    var str = '<table border="1" style="background:'+cr+'">'
+
+    for(var i = 1; i <10 ; i ++){
+        str+='<tr>'
+         str+='<td ">'
+            
+            str+=dan+ "x"+ i +"="+ (dan*i)+"<br>"
+        
+         str+='</td>'
+        str+='</tr>'
+        }
+    str += '</table>'
+    document.write(str)
+    </script>
+</body>
+</html>

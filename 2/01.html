@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="hd" onclick="hdclick()">자바스크립트</h1>
+    <script>
+        var hd=document.querySelector('#hd');
+        function hdclick(){
+            hd.style.color='red'
+        }
+    var name = prompt("이름을 입력하세요 : ")
+    var year = prompt(`안녕하세요, ${name}님 ! 태어난 년도를 입력하세요 : `)
+    var age = 2022 - year+1 
+    document.write(`${name}님의 나이는 <h2 style="color:blue">${age}</h2> 입니다.`)
+    </script>
+</body>
+</html>

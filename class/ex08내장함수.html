@@ -11,7 +11,9 @@
     <h2>parseInt(), parseFloat(), Number(), Boolean(), isNaN(), eval()</h2>
     <script>
         var a=parseFloat("3.14");//실수 유형
-        var b=Number("2.12");
+        var b=Number("2.12"); //  string유형"2.12"를 number유형으로 바꿔줌
+        pr(b)
+        pr(typeof(b))
         document.write(a+b,"<br>");
 
         var str="50+11*2-3";
@@ -44,7 +46,7 @@
         pr(Boolean(false));
         pr(Boolean("rr"));
 
-
+       
         function pr(str){
             document.write("<h2>"+str+"</h2>");
         }

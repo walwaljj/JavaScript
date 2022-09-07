@@ -64,7 +64,7 @@
         $(function(){
             $('.btn').click(function(){//핸들러를 매개변수로줌
                 alert("hi")
-                $.ajax({
+                $.ajax({//.ajax 예약어
                     type : 'get', 
                     url : 'ex32Data.json',
                     dataType:'json',
@@ -78,7 +78,7 @@
                             <img src="images/${res.poster}"
                         `)
                     },
-                    error:function(err){
+                    error:function(err){// error예약어
                         alert('error발생 : '+err.status) 
                     }
 

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>적정 체중을 구하는 프로그램</h1>
+    <div>
+        [실습] 이름, 키, 몸무게를 입력받아서 적정 체중을 구한 뒤 비교하여
+               적정 체중을 10% 초과하면  '과체중(red)', 적정 체중 10% 미달이면
+               '체중 미달(blue)', 그 외에는 '적정체중(green)'을 출력하세요
+               <br><br>
+        <h3 style="color:brown">
+        적정 체중 = (신장 -100) *0.9 를 적정체중으로 봅니다.
+        </h3>
+        <hr>
+    <script>
+        var name = prompt("이름을 입력하세요 ");
+        var h = parseInt(prompt("키를 입력하세요"));
+        var w = parseInt(prompt("몸무게를 입력하세요"));
+
+        bmi=(h-100)*0.9
+        document.write("적정체중 : ",bmi)
+    
+        
+           if( w>bmi*1.1){
+           document.write(`<h2 style='color : rad ;'>과체중</h2>`)
+           }else if( w<bmi*0.9 ){
+            document.write(`<h2 style='color : blue ;'>저체중</h2>`)
+           }else{
+                document.write(`<h2 style='color : pink;'>적정체중</h2>`)
+           }
+                </script>
+</body>
+</html>
