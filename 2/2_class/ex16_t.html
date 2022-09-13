@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #circle{
+            width:100px;
+            height:100px;
+            border-radius: 50%;
+            background-color:  olivedrab;
+            position: absolute;/*부모가 없어 바디를 기준으로 좌표를 잡음.*/
+            top :200px;
+        }
+    </style>
+    <script>
+        let win = null
+        window.onload=function(){
+            obj=document.querySelector('#circle')
+            // alert(obj)
+        }
+        //3초뒤에 알람이 뜨는 함수
+        function show(){
+            if(win==null)
+            win=setInterval(function(){
+                    alert("성공?")
+                },3000)
+            }
+        
+        //show함수가 실행되지 않게함.
+        function stop(){
+            if(win!=null)
+            window.clearInterval(win)
+        }
+        //원이 움직인다. 
+        let x=30
+        function move(){
+            
+            if(win==null){
+            win =setInterval(function(){
+                if(x>300){
+                    i=-1;
+                }
+                else if(x<20)
+                    i=1;
+               
+                obj.style.left = x+'px'
+                x+=i
+            },30)
+        }
+        }
+        //원이 멈춘다.
+        function moveStop(){
+            if(win!=null){
+                window.clearInterval(win);
+                win=null
+            }
+
+        }
+        function ask(){
+            let yn = confirm('네이버로 이동할까요?');
+            if(yn){//true 이면
+                location.href='http://www.naver.com';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>window 객체의 setInterval()/clearInterval()활용</h1>
+    <!-- setInterval(함수명,밀리초) : 밀리초 단위로 함수를 주기적으로 계속 수행한다.--> 
+    <button onclick="show()">Click Me</button>
+    <button onclick="stop()">Stop</button>
+    <button onclick="move()">Move</button>
+    <button onclick="moveStop()">MoveStop</button>
+    <button onclick="window.alert('반갑습니다.')">alert</button>
+    <button onclick="let str=prompt('메세지를 입력하세요'); alert(str)">prompt</button>
+    <!--prompt로 받은 메세지를 str에저장, 저장한 str을 alert로 받음.-->
+    <button onclick="ask()">confirm</button>
+    <hr>
+    <div id="circle"></div>
+    
+</body>
+</html>

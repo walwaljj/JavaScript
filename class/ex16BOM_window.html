@@ -33,12 +33,12 @@
                     alert(":p");
                 },3000)
             }
-        }
+        }//현재 wid에 setinterval이 담겨있음(timer)
 
 
         function stop(){
             if(wid!=null)//null인데 함수가 실행되면 에러가남. 방지하기위해!
-                window.clearInterval(wid);
+                window.clearInterval(wid);//timer의 시간을 clear시킴
                 //]stop을 실행하면 win의 timer가 clear되고 , null인상태는 아니기때문에 move버튼으로 움직이지않음.
         }
 
