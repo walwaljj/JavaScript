@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>3행5열 형태의 테이블 출력하되 for루프로</h1>
+    <script>
+        var col=(prompt("열의 수를 입력하세요 "))
+        var row=prompt("행의 수를 입력하세요")
+        var clor=prompt("무슨 색으로 할까요 ? (영어입력)")
+
+        var str = "<table border='1' style='background-color:"+clor+"';>"
+        for (var i = 0; i <row ; i ++){
+            str += "<tr>"
+            for(var j = 0; j <col ; j ++){
+                str+="<td>딸기"
+
+                str+='</td>'
+            }
+            str+='</tr>'
+        }
+        str +="</table>"
+        document.write(str)
+    </script>
+</body>
+</html>
