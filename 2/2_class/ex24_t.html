@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>    
+    <style>
+        body{
+            background-color: black;
+            color:white;
+            
+        }
+        div#movies{
+            width: 90%;
+            margin: 50px auto;
+            text-align: center;
+            /* border: thick salmon solid; */
+        }
+        div#btns{/*div 가로 및 버튼 수평중앙 맞추기*/
+            width : 50%;
+            margin: auto;
+            /* border: 1px solid white; */
+            text-align: center;   
+            padding: 5px; 
+        }
+        div#btns button{
+            width:  120px;
+            height: 30px;
+        }
+        div#movies img{/*기준이미지에 모든 이미지요소 크기 맞추기*/
+            width:150px;
+            height: 212.5px;
+            border: double orange 2px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="btns">
+            <button id="btn1">현재 상영작</button>
+            <button id="btnPlay">Play</button>
+            <button id="btnStop">Stop</button>
+        </div>
+        <div id="movies">
+    </div>
+    <script>
+        //현재 상영중인 영화 이미지 5개를 배열에 저장하기
+        let movies = ["m1.png","m2.png","m3.png","m4.png","m5.png"]
+
+        //현재 상영작 버튼을 누르면 배열에 저장한 영화 이미지를 div #movies에 담기
+        //innerHTML 이용하고 상영작을 누르면 들어가게
+        
+        let btn1=document.getElementById("btn1");
+        let btnPlay = document.querySelector("#btnPlay");
+        let btnStop = document.querySelector("#btnStop");
+        let div_movies = document.querySelector("#movies");
+        let wid = null;
+
+        btn1.onclick=function(){
+            let str = ``;
+            movies.forEach(function(movie){
+                str +=`<img src = "images /${movie}">`;
+            })
+            div_movies.innerHTML = str;
+        }
+
+        //play 버튼을 누르면 영화이미지들이 오른쪽으로 이동하게 하기 
+        btnPlay.onclick=function(){
+            div_movies.style.position = "absolute";
+            let x = 20;
+            let i = 1;
+            if(wid==null){
+                
+                wid = setInterval(() => {
+                
+                    if(x>300){
+                        i=-1;
+                    }
+                    if(x<20){
+                        i=1;
+                    }
+                    div_movies.style.left = x+"px";
+                    x+=i;
+                }, 10);
+            }
+        }
+        //stop버튼을 누르면 멈추기
+        btnStop.onclick = function(){
+            if(wid!=null){
+                clearInterval(wid)
+            }wid=null;
+        }
+    </script>
+</body>
+</html>

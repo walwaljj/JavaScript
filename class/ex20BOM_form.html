@@ -10,14 +10,12 @@
             //유효성 체크 "form이름.input이름.value"-- form이름이있는게 편리하다.
                                                 //앖으면 window.document.forms...
             let val = frm.name.value;
-            // alert(val);//여기까지하면 입력한 name이 알림으로뜸
+            // alert(val);//여기까지하면 입력한 value인 text창의 값이 알림으로뜸
             if(val==''){
                 alert('이름을 입력해야 해요');
                 frm.name.focus();//입력포커스주기=>알림창 후 텍스트 박스 깜빠김
                 return;
-                //버튼 디폴트인 submit은 return을 해도 서버에 전송
-                //해결 : [1]- button의 타입을 button으로 
-                // frm.submit();-form객체를 통해 submit()한다
+
             }
             if(val.length>5){
                 alert('이름은 5자 이내여야해요');
@@ -29,6 +27,9 @@
             frm.action='findI.jsp';//setter  주소창에 findI까지나옴,
             frm.method='get';//: 사용자가 입력한 방식이 주소창에 나옴. 반대는 post 주소창에 나오지않음.
             frm.submit();
+                //버튼 디폴트인 submit은 return을 해도 서버에 전송
+                //해결 : [1]- button의 타입을 button으로 
+                // frm.submit();-form객체를 통해 submit()한다
         }//check()---------------------------------------------------
 
         function check2(){
