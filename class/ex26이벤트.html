@@ -29,7 +29,8 @@
 <body onload=" " onunload="alert('bye bye');closeWin()"><!--html을 onload='openWin()'할때--> 
     <h1>이벤트</h1>
     <label for="userid">아이디: </label>
-    <input type="text" name="userid" id="userid" onfocus="this.style.backgroundColor='lightblue'"
+    <input type="text" name="userid" id="userid" 
+    onfocus="this.style.backgroundColor='lightblue'"
     onblur="this.style.backgroundColor=''"
     onchange="document.bgColor='aqua'"
     oninput="this.style.color='blue'">
@@ -57,8 +58,8 @@
         ㄴonkeyup : 키를 눌렀다 뗄 때
 
 
-        onmouseenter : 마우스가 영역에 들어왔을 때
-        onmouseleave : 마우스가 영역을 떠날 때                
+        onmouseenter : 마우스가 영역에 들어왔을 때 = onmouseover
+        onmouseleave : 마우스가 영역을 떠날 때  = onmouseout      
      -->
      <br><br>
      
@@ -69,7 +70,8 @@
             <td width="33.3%" ondblclick="this.style.backgroundImage='url(./images/sh.png)'">더블클릭</td>
             <td width="33.3%">
                 <textarea rows="7" cols="20"
-                onselect="this.style.color='red';this.style.border='10px dashed green';">이곳에 쓴 내용을 select해보세요</textarea>
+                onselect="this.style.color='red';this.style.border='10px dashed blue';">이곳에 쓴 내용을 select해보세요</textarea>
+                <!--드레그하니 색이바뀜,,-->
             </td>
         </tr>
     </table>

@@ -24,21 +24,21 @@
             let obj=document.getElementById('result');
             // alert(input1[0]); //잘뜨는지 확인
             // let val=input1[0].value; 값얻어오기
-            input1[1].onkeydown=function(evt){//리터럴 방식이라면()에 공백줘도됨 
+            input1[0].onkeydown=function(evt){//리터럴 방식이라면()에 공백줘도됨 
             //input1[0]의 의미를 모륵ㅆ음.. 왜[1],[2] 는 안되는지? 
+                                                                //body의 input은 1개밖에없음. input[0] 만 가능하다. 만약 input이 여러개라면 순서대로 [1],[2]값이 가능하겠지
                 // console.log(evt)//콘솔창에 이벤트 발생시 일어나는 모든 속성이 뜨는듯?
                                 //ex/ text창에 ef를치면 아래같이 뜬다.
                                 /*KeyboardEvent {isTrusted: true, key: 'f', code: 'KeyF', location: 0, ctrlKey: false, …}
                                 ... keyCode: 70 도 뜨는데 , 아스키코드임.*/
             //엔터를 치면 input1[0]의 값을 얻어서 id가 result인 div요소 안에 메세지를 출력하기
                 if(evt.keyCode==13){//만약 엔터를치면 .. keyCode 13은 엔터의 아스키코드 
-
-                let str=this.value;//실행문을 담을 변수 선언
-                
-                obj.innerHTML+=`${str}<br>`//HTML의 div ( result)를 담은 obj에
-                                            //innerHTML을 이용해 html의 코드를 담을수 있게
-                this.value='';//str을 ' '공백으로 만들어서 text박스 비워주기
-                this.focus();//입력포커스 주기
+                    let str=this.value;//실행문을 담을 변수 선언 
+                            //this 는 input1[0]이다.
+                    obj.innerHTML+=`${str}<br>`//HTML의 div ( result)를 담은 obj에
+                                                //innerHTML을 이용해 html의 코드를 담을수 있게
+                    this.value='';//str을 ' '공백으로 만들어서 text박스 비워주기
+                    input1[0].focus();//입력포커스 주기
                 }
             }
         }

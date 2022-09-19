@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div#result{
+            width: 500px;
+            height: 500px;
+            border:  1px solid silver;
+            margin: 1em;
+
+        }
+        input{
+            width: 400px;
+            padding:  3px;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            let obj = document.querySelector('#result')
+            let input1 = document.querySelector('#msg')
+
+            input1.onkeydown=function(evt){
+                if(evt.keyCode==13){
+                    var result = input1.value
+                    obj.innerHTML+=`${result}<br>`
+                    input1.value = ''
+                    input1.focus();
+                }
+            }
+        }
+        
+
+        
+    </script>
+</head>
+<body>
+    <div>
+        <label for="">메세지</label>
+        <input id="msg">
+</div>
+<div id="result">
+</div>
+</body>
+</html>

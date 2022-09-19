@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload=init;
+
+        function init(){
+            e1=document.getElementsByClassName('e1')
+            //2번째 클릭시 백그라운드 컬러 , 글자색 바꾸기
+            e1[1].addEventListener('mouseover',function(){
+                e1[1].style.color='white'
+                this.style.backgroundColor = 'thistle'
+            })
+            e1[1].addEventListener('mouseout',function(){
+                e1[1].style.color=''
+                this.style.backgroundColor =''
+            })             
+            /*[3] addEventListener (이벤트 종류,핸들러 함수)*/
+            //3번째 버튼을 더블클릭시 글자색을 red로 변경하기
+            
+            e1[2].addEventListener('click',function(){
+                this.style.color='red'
+            })
+            e1[2].addEventListener('mouseout',function(){
+                this.style.color=''
+            })
+        }
+
+    </script>
+</head>
+<body>
+    <h1 class="e1" onmouseover="this.style.border='2px dashed blue'"
+    onmouseout="this.style.border=''">이벤트 처리1</h1><!-- this.은 h1을 가리킴-->
+
+    <h1 class="e1">이벤트 처리2</h1><!-- index가 배열과 같아 두번째 버튼은 인덱스 1임.-->
+    <h1 class="e1">이벤트 처리3</h1>
+</body>
+</html>
