@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>DOM - 삭제, 수정</h1>
+    <ul id="menu">
+        <li>HTML</li>
+        <li id='css'>CSS</li>
+        <li id='js'>JavaScript</li>
+        <li>jQuery</li>
+    </ul>
+    <hr>
+    <button onclick="del()">dom 삭제</button>
+    <button onclick="del2()">dom 삭제2</button>
+	<button onclick='edit()'>dom수정1</button>
+
+    <script>
+         //li중 css삭제 
+        function del(){
+            let menu = document.getElementById('menu')
+            let cs = document.getElementById('css')
+           
+            menu.removeChild(cs)
+        }
+         //parentNode : 선택 요소의 부모 노드를 찾아준다.'js'삭제
+
+         function del2(){
+            let js = document.querySelector('#js')
+            js.parentNode.removeChild(js)
+         }
+
+         //부모요소.replaceChild(new,old): 부모요소 중 old인 요소를 찾아 new로 대체한다.
+
+         function edit(){
+            let old = document.querySelectorAll('li')
+            let txt = document.createTextNode('Ajax')
+            let new1 = document.createElement('li')
+            let old1 = old[old.length-1]
+            new1.appendChild(txt)
+            old1.parentElement.replaceChild(new1,old1)//(새로운 틀, 원래 틀 )
+
+         }
+    </script>
+</body>
+</html>
