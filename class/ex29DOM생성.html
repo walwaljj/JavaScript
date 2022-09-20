@@ -25,13 +25,14 @@
             result.innerHTML=str;
         })
 
-        //br2클릭시 이미지 추가하기
-        //createElement('엘리먼트명'):새로운 엘리먼트를 생성
+        
+        //createElement('엘리먼트명'):새로운 엘리먼트(html요소)를 생성
         //createText('텍스트'): 새로운 텍스트를 생성
         //부모요소.appendChild (앨리먼트객체)  : 부모요소에 붙는다.
-        //부모요소insertBefore(앨리먼트객체, target ): target앞에 붙이기
-        //속성추가시 : 요소,setAttribute('css속성','속성값'); : 뒤에 세미콜론이 무조건 들어가야함.
+        //부모요소.insertBefore(앨리먼트객체, target ): target앞에 붙이기
+        //속성(css요소)추가시 : 요소.setAttribute('css속성','속성값'); : 뒤에 세미콜론이 무조건 들어가야함.
 
+        //br2클릭시 이미지 추가하기
         bt2.onclick=function(){//bt2가 클릭될때 일어나는 함수
             let objH2 = document.createElement('h2');//<h2>태그가 만들어짐
             let txt = document.createTextNode('Hello JavaScreipt');//txt에 text속성node를 만들어 ('Hello JavaScreipt')를 넣는다.

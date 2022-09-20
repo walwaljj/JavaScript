@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>DOM - 새로운 Element 를 생성해서 추가해보자.</h1>
+    <button id='bt1'>새로운 요소 생성1</button>
+    <button id='bt2'>새로운 요소 생성2</button>
+    <hr color='red'>
+    <div id="result">
+        
+        <script>
+            
+            let bt1 = document.querySelector('#bt1')
+            let bt2 = document.querySelector('#bt2')
+            let result = document.getElementById('result')
+
+
+            //bt1에 클릭시 이미지 넣는 이벤트 처리
+
+            bt1.addEventListener('click',function(){
+                result.innerHTML="<img src='../../images/1.png'>"
+            
+            })
+
+            //br2클릭시 div에 이미지 추가, txt추가 하기
+
+            bt2.onclick = function(){
+                let obj = document.createElement('h2')
+                let img = document.createElement('img')
+                let txt = document.createTextNode('사진입니다!')
+                obj.appendChild(txt)
+                result.appendChild(obj)
+
+                obj.setAttribute('style','color : maroon')
+
+                img.setAttribute('src','../../images/2.png')
+                img.setAttribute('width','150px')
+                img.setAttribute('height','200px')
+
+                result.insertBefore(img,obj)
+                
+            }
+        </script>
+</body>
+</html>
