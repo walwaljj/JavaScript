@@ -30,7 +30,7 @@
                     .css({
                         color :'green',
                         fontSize : '2em',
-                        backgroundColor : 'bisque'})
+                        backgroundColor : 'bisque'})//json?
                     
         })
         
@@ -52,12 +52,16 @@
     <button class="btn">ajax 요청보내기</button>
     <script>
         /*
+        
+        //<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"><//script>
+        위 코드와 같이 다른 페이지의 json을 참조했을때
+
             $.ajax({
                 type :"요청방식",
                 url  : "요청url",
                 dataType : '응답유형',
-                success : function(res){실행문},
-                error:function(err){...}
+                success : function(res){실행문}, // 성공시 
+                error:function(err){...} //실패시
             })
         */
         //제이쿼리를 넣으면 제이쿼리방식으로 이벤트헨들러를 씀.
@@ -76,7 +80,7 @@
                             <h1>${res.title}</h1>
                             <h1>${res.actor}</h1>
                             <img src="images/${res.poster}"
-                        `)
+                        `)//id a 에 html요소를 qurey방식으로 붙힘. res는 ex32Data.json가 담겨있다.
                     },
                     error:function(err){// error예약어
                         alert('error발생 : '+err.status) 
