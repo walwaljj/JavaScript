@@ -28,6 +28,8 @@
         document.write(`<h1>${dog.bark()}</h1>`);
 
         //[2] 생성자 함수
+        let cat= new Cat("쫑이",2);// 함수 Cat을메모리에 올려, cat 객체를 생성함.
+        document.write(`<h2>${cat.bark()}</h2>`);
         function Cat(name, age){
             this.name = name; //this.은 객체의 속성
             this.age = age;
@@ -36,8 +38,7 @@
                  return s;
             }
         }
-        let cat= new Cat("쫑이",2);// 함수 Cat을메모리에 올려, cat 객체를 생성함.
-        document.write(`<h2>${cat.bark()}</h2>`);
+
 
         //***중요** [3]literal방식 json형식 : {} - object / [] - 배열***************
         //선언 ={ 변수 : ' ',

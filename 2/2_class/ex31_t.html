@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+               /* 객체 생성 방법
+           1. Object객체를 이용해서 생성하는 방법
+           2. 생성자함수를 이용하는 방법
+           3. literal 표기를 이용하는 방법 ==> JSON <== 중요!!!!!!!!!!!!!1
+        */
+
+        //[1]. Object()내장이용
+        let dog = new Object()
+
+        dog.name = '짱구'
+        dog.str = ''
+        dog.bark=function(){
+            str = `${dog.name}강아지가 멍멍짖어요`
+            return str
+            
+        }
+        document.write(`<h2>${dog.bark()}</h2>`)
+        //[2] 생성자 함수
+
+        let cat = new Cat('쫑이')
+        str2 = ''
+        
+        document.write(`${cat.bark()}`)
+        function Cat(name){
+            this.name = name;
+            this.bark=function(){// 여기서 this를 안하니 안됨.
+                                //cat.name && cat.bark는 안됨.
+            str2 = `${cat.name} 고양이는 야옹야옹 울어요`//여기는 cat.name가능
+            return str2
+            }
+            
+        }
+
+
+        //***중요** [3]literal방식 json형식 : {} - object / [] - 배열***************
+        //선언 ={ 변수 : ' ',
+        //        함수 : function(매개변수){ return 값;}}
+
+        let car={
+            name : 'K7',
+            run : function(name){
+                return `${name}자동차가 달려요`// this.name => 'K7'
+                                                //name => '안녕'
+            }
+        }
+        document.write(`${car.run('안녕')}`)
+
+
+    </script>
+</body>
+</html>
