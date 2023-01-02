@@ -1,5 +1,9 @@
-let currentResult = 0;
 
-currentResult = currentResult + 10;
+const defultResult = 0;
+let currentResult = defultResult;
 
-outputResult(currentResult,'');
+currentResult = (currentResult + 10) * 3 / 2 - 1;
+
+let calculationDescription = '('+defultResult + ' + 10) * 3 / 2 - 1'
+
+outputResult(currentResult,calculationDescription);
