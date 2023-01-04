@@ -12,7 +12,10 @@
     />
     <link rel="stylesheet" href="assets/styles/app.css" />
     <!-- <script>alert('This works - between script tags!')</script> -->
-    
+    <script src="assets/scripts/vendor.js" defer></script><!-- defer / async 스크립트를 로딩, 브라우저 차단x html계속 분석진행.-->
+    <script src="assets/scripts/app.js" defer></script><!-- async : 스크립트가 다운되면 바로 스크립트 실행. html분석 기다리지 않음.-->
+                                                           <!-- 화면에 정보를 주지않고 백그라운드에 데이터전송 ==> async -->
+                                                          <!--defer는 스크립트 실행 순서가 정해져있음 <-> async는 실행 순서정해지지 않음. --> 
   </head>
   <body>
     <header>
@@ -32,7 +35,6 @@
       <h2 id="current-calculation">0</h2>
       <h2>Result: <span id="current-result">0</span></h2>
     </section>
-    <script src="assets/scripts/vendor.js"></script>
-    <script src="assets/scripts/app.js"></script>
+
   </body>
 </html>
