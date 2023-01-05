@@ -26,6 +26,20 @@ function writeToLog(operationIdentifier, prevResult , operationNumber , newResul
     console.log(logEntries);
 }
 
+function calculation(calculationType){
+    const enteredNumber = getUerNumberInput();
+    const initialResult = currentResult;
+
+    if (calculationType === 'add') {
+        currentResult += enteredNumber;
+    }else{
+        currentResult -= enteredNumber;
+    }
+    
+    
+    createAndWriteOutput('-',initialResult, enteredNumber);
+    writeToLog('SUBTRACT',initialResult,enteredNumber,currentResult);
+}
 
 function add(){
     const enteredNumber = getUerNumberInput();// 사용자가 입력한 정수
