@@ -27,6 +27,20 @@ function writeToLog(operationIdentifier, prevResult , operationNumber , newResul
 }
 
 function calculateResult(calculationType){
+
+        
+    if(
+        calculationType !== 'ADD' && 
+        calculationType !=='SUBTRACT' &&
+        calculationType !== 'MULTIPLY' &&
+        calculationType !== 'DIVIDE' ||
+        !enteredNumber // 은  enteredNumber === 0  과 같다.
+    ){
+        return;// 코드 공유시 ㄴ 조건문의 '문자열'이 일치하지 않을때 return 문으로 아래 실행코드가 실행되지 않도록 함,
+    }
+
+
+
     const enteredNumber = getUerNumberInput();
     const initialResult = currentResult;
     let mathOperator;
@@ -43,7 +57,7 @@ function calculateResult(calculationType){
         currentResult /= enteredNumber;
         mathOperator = '/';
     }
-    
+
     
     createAndWriteOutput(mathOperator,initialResult, enteredNumber);
     writeToLog(calculationType,initialResult,enteredNumber,currentResult);
