@@ -1,15 +1,32 @@
-let chosenMaxLife = 100;
-let currentMonsterHealth = chosenMaxLife;
-let currentPlayerHealth = chosenMaxLife;
-let hasBonusLife = true;
 
 const ATTACK_VALUE = 10;
 const MONSTER_ATTACK_VALUE = 14;
 const STRONG_ATTACK_VALUE = 17;
 const HEAL_VALUE = 20;
 
+const MODE_ATTACK = 'ATTACK';
+const MODE_STRONG_ATTACK = 'STRONG_ATTACK';
+
+const enteredValue = prompt('Maximum life for you and the monster.','100');//대화상자, 파이썬의 input
+
+let chosenMaxLife = parseInt(enteredValue);
+let currentMonsterHealth = chosenMaxLife;
+let currentPlayerHealth = chosenMaxLife;
+let hasBonusLife = true;
+
+if (isNaN(chosenMaxLife) || chosenMaxLife <=0 ){ // isNaN() 숫자인지 , 아닌지
+    chosenMaxLife = 100;
+}
+
+
 adjustHealthBars(chosenMaxLife); //chosenMaxLife 를 전달 -> 웹 HTML 체력 bar를 조정함.
 
+// 게임을 리셋할 함수
+function reset(){ 
+    currentMonsterHealth = chosenMaxLife;
+    currentPlayerHealth = chosenMaxLife;
+    resetGame(chosenMaxLife);//생명 표시바 재 설정하기.
+}
 // function attackHandler(){
 //     const damage = dealMonsterDamage(ATTACK_VALUE);
 //     currentMonsterHealth -= damage;
@@ -60,18 +77,25 @@ function endRound(){
 
     if (currentMonsterHealth <= 0 && currentPlayerHealth > 0){
         alert('You won!');
+        // reset()
     }else if(currentPlayerHealth <= 0 && currentMonsterHealth > 0){
         alert('You lost');
+        // reset()
     }else if(currentMonsterHealth <= 0 && currentMonsterHealth <= 0 ){
          alert('You have a draw');
+        //  reset()
+    }
+
+    if ((currentMonsterHealth || currentPlayerHealth )<= 0){
+        reset();
     }
 }
 
 function attackMonster(mode){
     let maxDamage;
-    if (mode === 'ATTACK'){
+    if (mode === MODE_ATTACK ){
         maxDamage = ATTACK_VALUE;
-    }else if(mode ==='STRONG_ATTACK'){
+    }else if(mode === MODE_STRONG_ATTACK ){
         maxDamage = STRONG_ATTACK_VALUE;
     }
     const damage = dealMonsterDamage(maxDamage);

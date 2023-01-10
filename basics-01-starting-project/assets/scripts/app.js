@@ -63,6 +63,7 @@ function calculateResult(calculationType){
     writeToLog(calculationType,initialResult,enteredNumber,currentResult);
 }
 
+
 function add(){
     calculateResult('ADD');
     
