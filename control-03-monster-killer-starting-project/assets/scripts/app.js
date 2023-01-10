@@ -34,21 +34,26 @@ adjustHealthBars(chosenMaxLife); //chosenMaxLife 를 전달 -> 웹 HTML 체력 b
 
 //로그를 battleLog에 저장하게 할 함수.
 function writeToLog(ev , val, monsterHealth, playerHealth){
-
+    let logEntry = {
+        event: ev,// 이벤트 명
+        value: val,// 이벤트의 값 (회복 체력, 데미지 양 등..)
+        finalMonsterHealth: monsterHealth,
+        finalPlayerHealth: playerHealth
+    };
     switch (ev){
         case LOG_EVENT_PLAYER_ATTACK:
             logEntry.target = 'MONSTER';
             break;
         case LOG_EVENT_PLAYER_STRONG_ATTACK:
-            log.Entry.target = 'MONSTER';
+            logEntry = {
+                event: ev,// 이벤트 명
+                value: val,// 이벤트의 값 (회복 체력, 데미지 양 등..)
+                target: 'MONSTER',
+                finalMonsterHealth: monsterHealth,
+                finalPlayerHealth: playerHealth
+            };
             break;
         case LOG_EVENT_MONSTER_ATTACK:
-            logEntry.target = 'PLAYER';
-            break;
-        case LOG_EVENT_PLAYER_HEAL :
-            log.Entry.target = 'PLAYER';
-            break;
-        case LOG_EVENT_GAME_OVER :
             logEntry = {
                 event: ev,// 이벤트 명
                 value: val,// 이벤트의 값 (회복 체력, 데미지 양 등..)
@@ -57,14 +62,26 @@ function writeToLog(ev , val, monsterHealth, playerHealth){
                 finalPlayerHealth: playerHealth
             };
             break;
+        case LOG_EVENT_PLAYER_HEAL :
+            logEntry = {
+                    event: ev,// 이벤트 명
+                    value: val,// 이벤트의 값 (회복 체력, 데미지 양 등..)
+                    target: 'PLAYER',
+                    finalMonsterHealth: monsterHealth,
+                    finalPlayerHealth: playerHealth
+                };
+            break;
+        case LOG_EVENT_GAME_OVER :
+            logEntry = {
+                event: ev,// 이벤트 명
+                value: val,// 이벤트의 값 (회복 체력, 데미지 양 등..)
+                finalMonsterHealth: monsterHealth,
+                finalPlayerHealth: playerHealth
+            };
+            break;
         default: logEntry = {};
     }
-    let logEntry = {
-        event: ev,// 이벤트 명
-        value: val,// 이벤트의 값 (회복 체력, 데미지 양 등..)
-        finalMonsterHealth: monsterHealth,
-        finalPlayerHealth: playerHealth
-    };
+
     // if(ev === LOG_EVENT_PLAYER_ATTACK){
     //     logEntry.target = 'MONSTER';//    logEntry = {      target: 'MONSTER'      } 같음.
 
@@ -95,7 +112,25 @@ function writeToLog(ev , val, monsterHealth, playerHealth){
     //     finalPlayerHealth: playerHealth
     // };
     // battleLog.push(logEntry);
-    // }
+    // }else if(ev === LOG_EVENT_PLAYER_HEAL){
+    // logEntry = {
+        //     event: ev,// 이벤트 명
+        //     value: val,// 이벤트의 값 (회복 체력, 데미지 양 등..)
+        //     target: 'PLAYER',
+        //     finalMonsterHealth: monsterHealth,
+        //     finalPlayerHealth: playerHealth
+        // };
+        // battleLog.push(logEntry);
+        // }
+            // }else if(ev === LOG_EVENT_GAME_OVER){
+    // logEntry = {
+        //     event: ev,// 이벤트 명
+        //     value: val,// 이벤트의 값 (회복 체력, 데미지 양 등..)
+        //     finalMonsterHealth: monsterHealth,
+        //     finalPlayerHealth: playerHealth
+        // };
+        // battleLog.push(logEntry);
+        // }
     battleLog.push(logEntry);
 }
 
@@ -227,10 +262,15 @@ function printLogHandler(){
     //     console.log('-------------');
     // }
     let j = 0;
-    while(j >3){
+    // while(j >3){
+    //     console.log('-------------');
+    //     j++;
+    // }
+    do{
         console.log('-------------');
         j++;
-    }
+    }while(j >3);
+
     let i = 0;
 
     // for(const logEntry of battleLog){
