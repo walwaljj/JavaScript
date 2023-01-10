@@ -51,7 +51,7 @@ function writeToLog(ev , val, monsterHealth, playerHealth){
         case LOG_EVENT_GAME_OVER :
             logEntry = {
                 event: ev,// 이벤트 명
-                valye: val,// 이벤트의 값 (회복 체력, 데미지 양 등..)
+                value: val,// 이벤트의 값 (회복 체력, 데미지 양 등..)
                 target: 'PLAYER',
                 finalMonsterHealth: monsterHealth,
                 finalPlayerHealth: playerHealth
@@ -61,7 +61,7 @@ function writeToLog(ev , val, monsterHealth, playerHealth){
     }
     let logEntry = {
         event: ev,// 이벤트 명
-        valye: val,// 이벤트의 값 (회복 체력, 데미지 양 등..)
+        value: val,// 이벤트의 값 (회복 체력, 데미지 양 등..)
         finalMonsterHealth: monsterHealth,
         finalPlayerHealth: playerHealth
     };
@@ -71,7 +71,7 @@ function writeToLog(ev , val, monsterHealth, playerHealth){
     // } else if(ev === LOG_EVENT_PLAYER_STRONG_ATTACK){
     //     logEntry = {
     //         event: ev,// 이벤트 명
-    //         valye: val,// 이벤트의 값 (회복 체력, 데미지 양 등..)
+    //         value: val,// 이벤트의 값 (회복 체력, 데미지 양 등..)
     //         target: 'MONSTER',
     //         finalMonsterHealth: monsterHealth,
     //         finalPlayerHealth: playerHealth
@@ -80,7 +80,7 @@ function writeToLog(ev , val, monsterHealth, playerHealth){
     // } else if(ev === LOG_EVENT_MONSTER_ATTACK){ 
     //     logEntry = {
     //         event: ev,// 이벤트 명
-    //         valye: val,// 이벤트의 값 (회복 체력, 데미지 양 등..)
+    //         value: val,// 이벤트의 값 (회복 체력, 데미지 양 등..)
     //         target: 'PLAYER',
     //         finalMonsterHealth: monsterHealth,
     //         finalPlayerHealth: playerHealth
@@ -89,7 +89,7 @@ function writeToLog(ev , val, monsterHealth, playerHealth){
     // }else if(ev === LOG_EVENT_MONSTER_ATTACK){
     // logEntry = {
     //     event: ev,// 이벤트 명
-    //     valye: val,// 이벤트의 값 (회복 체력, 데미지 양 등..)
+    //     value: val,// 이벤트의 값 (회복 체력, 데미지 양 등..)
     //     target: 'PLAYER',
     //     finalMonsterHealth: monsterHealth,
     //     finalPlayerHealth: playerHealth
@@ -223,7 +223,29 @@ function healPlayerHandler(){
 }
 
 function printLogHandler(){
-    console.log(battleLog);
+    // for(let i = 0 ; i < 3 ; i ++){
+    //     console.log('-------------');
+    // }
+    let j = 0;
+    while(j >3){
+        console.log('-------------');
+        j++;
+    }
+    let i = 0;
+
+    // for(const logEntry of battleLog){
+    //     console.log(logEntry);
+    //     console.log(i);
+    //     i++;
+    // }
+
+    for(const logEntry of battleLog){// 배열이 저장된 battleLog 를 꺼내 logEntry 에 저장함.
+        console.log(`${i}`);
+        for(const key in logEntry){// logEntry 에 저장된 내용 event, value 등 )을 key 변수에 저장, 
+            console.log(`${key} => ${logEntry[key]} `);// consol에 키 => 값 형태로 출력.
+        }
+        i++;
+    }
 }
 
 attackBtn.addEventListener('click',attackHandler);//attackBtn = document.getElementById('attack-btn'); 
