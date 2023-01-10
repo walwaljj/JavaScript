@@ -34,43 +34,68 @@ adjustHealthBars(chosenMaxLife); //chosenMaxLife 를 전달 -> 웹 HTML 체력 b
 
 //로그를 battleLog에 저장하게 할 함수.
 function writeToLog(ev , val, monsterHealth, playerHealth){
+
+    switch (ev){
+        case LOG_EVENT_PLAYER_ATTACK:
+            logEntry.target = 'MONSTER';
+            break;
+        case LOG_EVENT_PLAYER_STRONG_ATTACK:
+            log.Entry.target = 'MONSTER';
+            break;
+        case LOG_EVENT_MONSTER_ATTACK:
+            logEntry.target = 'PLAYER';
+            break;
+        case LOG_EVENT_PLAYER_HEAL :
+            log.Entry.target = 'PLAYER';
+            break;
+        case LOG_EVENT_GAME_OVER :
+            logEntry = {
+                event: ev,// 이벤트 명
+                valye: val,// 이벤트의 값 (회복 체력, 데미지 양 등..)
+                target: 'PLAYER',
+                finalMonsterHealth: monsterHealth,
+                finalPlayerHealth: playerHealth
+            };
+            break;
+        default: logEntry = {};
+    }
     let logEntry = {
         event: ev,// 이벤트 명
         valye: val,// 이벤트의 값 (회복 체력, 데미지 양 등..)
         finalMonsterHealth: monsterHealth,
         finalPlayerHealth: playerHealth
     };
-    if(ev === LOG_EVENT_PLAYER_ATTACK){
-        logEntry.target = 'MONSTER';//    logEntry = {      target: 'MONSTER'      } 같음.
+    // if(ev === LOG_EVENT_PLAYER_ATTACK){
+    //     logEntry.target = 'MONSTER';//    logEntry = {      target: 'MONSTER'      } 같음.
 
-    } else if(ev === LOG_EVENT_PLAYER_STRONG_ATTACK){
-        logEntry = {
-            event: ev,// 이벤트 명
-            valye: val,// 이벤트의 값 (회복 체력, 데미지 양 등..)
-            target: 'MONSTER',
-            finalMonsterHealth: monsterHealth,
-            finalPlayerHealth: playerHealth
-        };
-        // battleLog.push(logEntry);
-    } else if(ev === LOG_EVENT_MONSTER_ATTACK){ 
-        logEntry = {
-            event: ev,// 이벤트 명
-            valye: val,// 이벤트의 값 (회복 체력, 데미지 양 등..)
-            target: 'PLAYER',
-            finalMonsterHealth: monsterHealth,
-            finalPlayerHealth: playerHealth
-        };
-        // battleLog.push(logEntry);
-    }else if(ev === LOG_EVENT_MONSTER_ATTACK){
-    logEntry = {
-        event: ev,// 이벤트 명
-        valye: val,// 이벤트의 값 (회복 체력, 데미지 양 등..)
-        target: 'PLAYER',
-        finalMonsterHealth: monsterHealth,
-        finalPlayerHealth: playerHealth
-    };
+    // } else if(ev === LOG_EVENT_PLAYER_STRONG_ATTACK){
+    //     logEntry = {
+    //         event: ev,// 이벤트 명
+    //         valye: val,// 이벤트의 값 (회복 체력, 데미지 양 등..)
+    //         target: 'MONSTER',
+    //         finalMonsterHealth: monsterHealth,
+    //         finalPlayerHealth: playerHealth
+    //     };
+    //     // battleLog.push(logEntry);
+    // } else if(ev === LOG_EVENT_MONSTER_ATTACK){ 
+    //     logEntry = {
+    //         event: ev,// 이벤트 명
+    //         valye: val,// 이벤트의 값 (회복 체력, 데미지 양 등..)
+    //         target: 'PLAYER',
+    //         finalMonsterHealth: monsterHealth,
+    //         finalPlayerHealth: playerHealth
+    //     };
+    //     // battleLog.push(logEntry);
+    // }else if(ev === LOG_EVENT_MONSTER_ATTACK){
+    // logEntry = {
+    //     event: ev,// 이벤트 명
+    //     valye: val,// 이벤트의 값 (회복 체력, 데미지 양 등..)
+    //     target: 'PLAYER',
+    //     finalMonsterHealth: monsterHealth,
+    //     finalPlayerHealth: playerHealth
+    // };
     // battleLog.push(logEntry);
-    }
+    // }
     battleLog.push(logEntry);
 }
 
@@ -154,16 +179,16 @@ function endRound(){
 }
 
 function attackMonster(mode){
-    let maxDamage;
-    let logEvent;
+    const maxDamage = mode === MODE_ATTACK ? ATTACK_VALUE : STRONG_ATTACK_VALUE;
+    const logEvent = mode === MODE_ATTACK ? LOG_EVENT_PLAYER_ATTACK : LOG_EVENT_PLAYER_STRONG_ATTACK;
     
-    if (mode === MODE_ATTACK ){
-        maxDamage = ATTACK_VALUE;
-        logEvent = LOG_EVENT_PLAYER_ATTACK;
-    }else if(mode === MODE_STRONG_ATTACK ){
-        maxDamage = STRONG_ATTACK_VALUE;
-        logEvent = LOG_EVENT_PLAYER_STRONG_ATTACK;
-    }
+    // if (mode === MODE_ATTACK ){
+    //     maxDamage = ATTACK_VALUE;
+    //     logEvent = LOG_EVENT_PLAYER_ATTACK;
+    // }else if(mode === MODE_STRONG_ATTACK ){
+    //     maxDamage = STRONG_ATTACK_VALUE;
+    //     logEvent = LOG_EVENT_PLAYER_STRONG_ATTACK;
+    // }
     const damage = dealMonsterDamage(maxDamage);
     currentMonsterHealth -= damage;
     writeToLog(logEvent, damage, currentMonsterHealth, currentPlayerHealth);
