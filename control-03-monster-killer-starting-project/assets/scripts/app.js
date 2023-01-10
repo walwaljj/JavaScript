@@ -1,6 +1,8 @@
 let chosenMaxLife = 100;
 let currentMonsterHealth = chosenMaxLife;
 let currentPlayerHealth = chosenMaxLife;
+let hasBonusLife = true;
+
 const ATTACK_VALUE = 10;
 const MONSTER_ATTACK_VALUE = 14;
 const STRONG_ATTACK_VALUE = 17;
@@ -41,8 +43,20 @@ adjustHealthBars(chosenMaxLife); //chosenMaxLife 를 전달 -> 웹 HTML 체력 b
 
 
 function endRound(){
+    const initialPlayerHealth = currentPlayerHealth;//몬스터가 공격하기 전 사용자의 체력을 변수에 저장.
     const playerDamage = dealPlayerDamage(MONSTER_ATTACK_VALUE);
     currentPlayerHealth -= playerDamage;
+
+    if (currentPlayerHealth <= 0 && hasBonusLife){ // 플레이어의 현재 체력이 0 과 같고, 보너스생명이 있으면
+        hasBonusLife = false;// 보너수 생명을 사용했기 때문에 false로 값을 변경하고
+        removeBonusLife();// HTML의 보너스 생명을 삭제함.
+        currentPlayerHealth = initialPlayerHealth;// 몬스터가 공격하기 전 저장했었던 체력을 다시 불러옴,
+                                                //즉 , 몬스터가 공격을 해 체력이 0 이되는 순간 보너스 생명으로 사용자가 지게 될 상황을 벗어남.  
+        
+        setPlayerHealth(initialPlayerHealth);//html 의 체력을 보너스 체력만클 업데이트 시킴.
+        alert('You would be dead but the bonus  life saved you!');
+        
+        }
 
     if (currentMonsterHealth <= 0 && currentPlayerHealth > 0){
         alert('You won!');
