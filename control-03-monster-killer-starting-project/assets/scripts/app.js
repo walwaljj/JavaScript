@@ -13,12 +13,33 @@ const LOG_EVENT_MONSTER_ATTACK = 'MONSTER_ATTACK';
 const LOG_EVENT_PLAYER_HEAL = 'PLAYER_HEAL';
 const LOG_EVENT_GAME_OVER = 'GAME_OVER';
 
-const enteredValue = prompt('Maximum life for you and the monster.','100');//대화상자, 파이썬의 input
 
-let chosenMaxLife = parseInt(enteredValue);
+
 // 로그내용을 저장할 배열
 let battleLog = []; 
+let lastLoggedEntry;
 
+function getMaxLifeValues(){
+    const enteredValue = prompt('Maximum life for you and the monster.','100');//대화상자, 파이썬의 input
+
+    let parsedValue = parseInt(enteredValue);
+    if (isNaN(parsedValue) || chosenMaxLife <=0 ){ // isNaN() 숫자인지 , 아닌지 판별, true , false 의 값을 가진다.
+        throw// 새로운 오류를 만드는 키워드. (숫자, 문자, 객체 오류등)
+        {message : 'Invalid user input, not a number!'};// throw 는 메세지 프로퍼티를 가짐. 여기서는 prompt 에 숫자값이 아닐때 오류가 나는 상황을 만들기 위해 사용함,
+    }
+    return parsedValue;
+}
+
+let  chosenMaxLife;
+
+//폴백로직. 코드 전체를 try~catch 하지 말고 , 함수를 이용하자!
+try { 
+    chosenMaxLife = getMaxLifeValues();
+}catch(e){
+    console.log(e);
+    chosenMaxLife = 100;
+    clearTimeout('잘못된 값이 입력되었습니다. 기본값 100 으로 설정됩니다.')
+}
 
 let currentMonsterHealth = chosenMaxLife;
 let currentPlayerHealth = chosenMaxLife;
